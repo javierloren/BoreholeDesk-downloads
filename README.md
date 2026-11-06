@@ -2,20 +2,29 @@
 
 Local desktop tools for reviewed geological and geotechnical field records, borehole logs and reports.
 
-**[Download for Windows](https://github.com/javierloren/BoreholeDesk-downloads/releases)** · [User guide](USER_GUIDE.md) · [Module reference](MODULES.md) · [RQD and data checks](QUALITY.md)
+**[Download for Windows](https://github.com/javierloren/BoreholeDesk-downloads/releases/tag/v0.1.3-preview.2)** · [User guide](USER_GUIDE.md) · [Module reference](MODULES.md) · [RQD and data checks](QUALITY.md)
 
-## Get started
+## Download and install
 
-1. Open Releases and download the latest preview's `setup.exe` asset.
-2. Choose **Quick trial** (about 0.72 GB total) or **Complete** (about 4.42 GB total,
-   with all readers prepared for offline work).
-3. Open BoreholeDesk and choose **File > Open example project**, or create your own.
+Choose **one** Windows installer from the [current release](https://github.com/javierloren/BoreholeDesk-downloads/releases/tag/v0.1.3-preview.2):
 
-Python and the selected engines are prepared automatically for your Windows user.
-Handwriting readers can be added later from the program. No shared API key or
-Roboflow account is required for local processing. Both choices use the same models.
-See the user guide for a local Packages folder and installation without internet.
-GitHub's `Source code (zip)` archive contains this repository, not the Windows installer.
+| Download | Recommended use | Total download |
+| --- | --- | --- |
+| **[Quick](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3-preview.2/BoreholeDesk-0.1.3-preview.2-Quick-Windows-x64.exe)** | Start with projects, reports, calculations, printed OCR, local RQD and slopes | About **0.72 GB** |
+| **[Complete](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3-preview.2/BoreholeDesk-0.1.3-preview.2-Complete-Windows-x64.exe)** | Include all handwriting and whole-column readers before working offline | About **4.42 GB** |
+
+Both initial EXEs are about 54 MiB. The installer downloads and verifies the
+selected components automatically; the table shows the complete download, not
+just the initial EXE. Follow the wizard and open BoreholeDesk from the Start menu.
+Quick can be expanded later through **Help > Install local readers**.
+
+No separate Python setup or shared Roboflow account is required. Both choices
+use the same calculation methods and models. After installation, choose
+**File > Open example project** or create your own project.
+
+Use the Windows installer assets. GitHub's automatic **Source code** archives
+contain repository files and are not Windows installers. See the
+[User guide](USER_GUIDE.md) for the full installation and offline preparation workflow.
 
 ## Modules
 

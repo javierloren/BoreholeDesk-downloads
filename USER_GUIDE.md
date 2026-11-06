@@ -2,18 +2,19 @@
 
 BoreholeDesk is a desktop application for geological and geotechnical field
 records, borehole logs, core photographs, interpretation and reports. This guide
-describes the **0.1.3-preview.1 Windows x64 preview**. Public user documentation
+describes the **0.1.3-preview.2 Windows x64 preview**. Public user documentation
 is maintained in English; source documents may be in English or Spanish.
 
 ## 1. Download and install
 
 1. Open the official release page and choose the version you want to test.
-2. Download **BoreholeDesk-0.1.3-preview.1-setup.exe**. Do not use GitHub's
+2. Download **Quick-Windows-x64.exe** for a quick trial or
+   **Complete-Windows-x64.exe** for all local readers. Do not use GitHub's
    **Code > Download ZIP** or **Source code** archives to install the application.
 3. Run the installer. It installs for your current Windows user without requiring
    administrator rights, a separate Python installation or a Roboflow account.
-4. Choose **Quick trial** or **Complete**, then follow the progress shown by the
-   installer. It obtains and verifies the selected components automatically.
+4. The installer preselects the choice named in your download. Follow its progress.
+   It obtains and verifies the selected components automatically.
 5. Open BoreholeDesk from the Start menu. Choose **File > Open example project**
    to explore fictitious data, or create a project of your own.
 
@@ -22,8 +23,8 @@ is maintained in English; source documents may be in English or Spanish.
 | Quick trial | Approximately 0.72 GB | Printed/scanned OCR, photographic RQD and the slope engine are included; handwriting readers can be added later |
 | Complete | Approximately 4.42 GB | All selected handwriting and whole-column readers are prepared for offline use |
 
-The small EXE is the initial installer, not the total download. Both choices use
-the same models and algorithms. No model is quantized to make Quick trial smaller.
+Both EXEs are small initial installers; the total download depends on the selected edition. Both choices use
+the same models and algorithms. The Quick edition can be expanded later without changing its models.
 Handwriting readers add approximately 1.77 GB; the advanced whole-column reader
 adds approximately 1.93 GB. Selecting a missing reader offers a one-time guided
 installation. **Help > Install local readers** installs the remaining readers.
@@ -31,7 +32,9 @@ After installation finishes, press **Read page(s)** again; your project stays op
 
 ### Offline installation
 
-Place the ten matching component ZIP/GZ assets in a **Packages** folder beside
+For a prepared offline installation, place the ten matching component files from
+the [technical component release](https://github.com/javierloren/BoreholeDesk-downloads/releases/tag/v0.1.3-preview.1)
+in a **Packages** folder beside
 the EXE, then run the installer. Do not extract, rename or mix component files
 from different releases. The installer verifies and restores them itself.
 Install all readers you will need before going to a site without internet access.
