@@ -2,7 +2,7 @@
 
 Local desktop tools for reviewed geological and geotechnical field records, borehole logs and reports.
 
-**[Download for Windows](https://github.com/javierloren/BoreholeDesk-downloads/releases)** · [User guide](USER_GUIDE.md) · [Methods and data checks](QUALITY.md)
+**[Download for Windows](https://github.com/javierloren/BoreholeDesk-downloads/releases)** · [User guide](USER_GUIDE.md) · [Module reference](MODULES.md) · [RQD and data checks](QUALITY.md)
 
 ## Get started
 
@@ -23,8 +23,18 @@ GitHub's `Source code (zip)` archive contains this repository, not the Windows i
 - Scanned field sheets and handwriting assistance with reviewed transcription.
 - Core photographs, physical calibration, depth blocks and local RQD segmentation.
 - Stratigraphic logs, geological sections, locations and data exchange.
-- Geotechnical calculation tools, rock mass classifications and slope analysis.
+- Shallow foundations: bearing resistance, contact pressures and settlement.
+- Deep foundations: shaft/toe resistance, chart factors, groups and axial load transfer.
+- Earth pressure: cohesive, Rankine, Coulomb, at-rest and layered calculations.
+- Structural geology: stereonets, kinematic screens and explicit block geometry.
+- Rock mass classification: RMR89, RMR14, SMR, quantified GSI and Q.
+- Lateral profile tests, SPT reduction, electrical sounding and rigid pavement.
+- Linear plane-strain finite elements and circular slope stability with active tiebacks.
 - PDF/HTML reports, data checks and a starter EN/ES technical glossary.
+
+The [module reference](MODULES.md) describes all **35 calculation worksheets**,
+five slope methods and the field-to-report workflows, with equations, units,
+input schedules, application conditions and bibliography.
 
 ## Working with field data
 

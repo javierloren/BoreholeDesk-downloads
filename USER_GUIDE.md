@@ -168,6 +168,9 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
 ## 8. Calculation references
 
+The [complete module reference](MODULES.md) documents all 35 calculation worksheets,
+slope stability and field-to-report workflows, with inputs, equations and bibliography.
+
 RQD: Deere, D. U., and Deere, D. W. (1989), *Rock Quality Designation (RQD) after
 Twenty Years*, Contract Report GL-89-1. The [official NTIS abstract](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/ADA207597.xhtml)
 supports sound pieces at least 100 mm long and measurement along the core axis.

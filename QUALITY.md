@@ -1,5 +1,7 @@
 # Calculation methods and data checks
 
+For all engineering methods, see the [complete module reference](MODULES.md).
+
 ## Rock Quality Designation (RQD)
 
 Following Deere and Deere (1989), RQD is the percentage of the core run formed
