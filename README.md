@@ -38,6 +38,8 @@ source and published SHA-256; keep Windows security protections enabled.
 
 ## Licence and feedback
 
+See [Licence and source code](LICENSING.md) for how AGPL applies to the application and your own data.
+
 BoreholeDesk is distributed under AGPL-3.0. Corresponding source code and licence
 notices are included with the application. Dependencies and models retain their
 own licences. This repository hosts product downloads and user documentation.
