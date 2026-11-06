@@ -17,9 +17,7 @@ together with build files and licence notices. Redistribution of covered softwar
 must preserve the applicable licence and source-code rights. AGPL also provides
 source access for users interacting over a network with a modified version.
 
-The development repository and unreleased work can remain private. Recipients
-must have access to the corresponding source of the version they receive.
-Internal project reviews and private field documents are not part of that source archive.
+Recipients have access to the corresponding source of the distributed version.
 
 ## Included libraries and models
 

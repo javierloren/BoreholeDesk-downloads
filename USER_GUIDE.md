@@ -98,17 +98,17 @@ from comparison with the original field record.
 ### Manual reference example
 
 In **Image RQD > Calculate manual RQD**, use a 100 cm drilled run and pieces of
-60, 20, 10, 5 and 5 cm. Expected RQD is **90%**. The default policy includes pieces
-**at least 10 cm long**. Four pieces of exactly 10 cm in a 60 cm drilled run give
-**66.7%**, not zero. Recovery and RQD use the drilled run as their denominator;
+60, 20, 10, 5 and 5 cm. Expected RQD is **90%**. RQD includes sound core pieces
+**at least 10 cm long**, measured along the core axis (Deere and Deere, 1989). Four pieces of exactly 10 cm in a 60 cm drilled run give
+**66.7%**. Recovery and RQD use the drilled run as their denominator;
 combined results must be weighted by run length rather than averaging percentages.
 
 ### Photographic workflow
 
 1. Choose **Local model (offline, trial)** and load a core-box photograph.
 2. Calibrate the two physical ends of each visible row using a measured length.
-   The author's reference boxes use **60 cm rows**. Measure other boxes; do not
-   assume every row is 60 cm or stretch the visible rock extent to fill the row.
+   For a measured **60 cm row**, enter 60 cm. Measure each box; do not
+   stretch the visible rock extent to fill the row.
 3. Mark and fix the depth blocks, then run **Process segmentation**.
 4. Review solid/fractured regions, individual pieces, row assignments, scale,
    depth blocks and the actual drilled interval. Correct mistakes before calculating.
@@ -119,8 +119,6 @@ Depth blocks remain part of the workflow. The apparent length of rock in a
 photograph does not establish drilled run length or missing core. Fracture
 interpretation and treatment of drilling-induced breaks require professional
 judgment.
-Roboflow is used only if explicitly selected with the user's own configuration;
-the local model does not use a shared author API key.
 
 ## 5. Logs, geological sections and reports
 
@@ -160,13 +158,7 @@ UserData files and projects outside the program folder are preserved on upgrade
 and uninstall. To repair missing or damaged components, rerun the matching
 installer; verified model files are reused. Do not delete UserData to repair a reader.
 
-## 7. Record a tutorial and report problems
-
-Use the installed Complete edition when demonstrating all readers offline.
-Start with installation, then the synthetic example, a reviewed field sheet,
-manual RQD, a calibrated core photograph, a section, save/reopen and PDF export.
-Record the exact version and the installation choice. Show uncertain readings
-and their correction, not just a successful result. Use only material you may share.
+## 7. Support and diagnostic reports
 
 **Help > Export diagnostic report** creates a local JSON file with versions and
 blank reproduction/expected/observed fields. It does not contain project data,
@@ -174,3 +166,15 @@ paths, credentials or environment values, and is not sent automatically. Review
 attachments, remove confidential information, and include the installer version
 and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
+## 8. Calculation references
+
+RQD: Deere, D. U., and Deere, D. W. (1989), *Rock Quality Designation (RQD) after
+Twenty Years*, Contract Report GL-89-1. The [official NTIS abstract](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/ADA207597.xhtml)
+supports sound pieces at least 100 mm long and measurement along the core axis.
+
+Core recovery: FHWA (2006), *Soils and Foundations, Volume I*, FHWA NHI-06-088,
+section 3.6.5.4, p. 3-44. [Manual](https://www.fhwa.dot.gov/engineering/geotech/pubs/nhi06088.pdf).
+
+The [Methods and data checks page](https://github.com/javierloren/BoreholeDesk-downloads/blob/main/QUALITY.md)
+provides the equations, variable definitions and supporting references. Specialist
+calculation panels and reports identify their selected methods and bibliography.

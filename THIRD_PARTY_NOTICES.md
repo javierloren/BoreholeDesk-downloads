@@ -26,7 +26,7 @@ records exact package versions and file hashes for the local engines.
 - **RapidOCR 3.9.2 / ONNX Runtime**: their notices and recorded OCR model provenance
   are included. PaddleOCR-derived model sources are recorded in `MODEL_SOURCES.json`.
 - **RF-DETR 1.4.3**: Apache-2.0. The local RQD pack records the selected model hash
-  and its independent training provenance. No private training photographs are supplied.
+  and its training provenance.
 - **TrOCR / UniLM**: MIT source/base-model notices are retained with the general
   model and the Spanish adaptation. English/bilingual cursive mode uses the general model.
 - **GLM-OCR**: upstream model card declares MIT; its original model card is retained.
@@ -39,8 +39,9 @@ records exact package versions and file hashes for the local engines.
   dependencies, including its FFmpeg backend. The original notices are included.
 
 The technical glossary is original BoreholeDesk content under the application
-licence. No personal reference books, field scans, training photographs or API keys
-are distributed. Legacy YOLO checkpoints and SSAP executables are not included.
+licence. Scientific method references are provided separately from these software
+and model licence notices. A bibliographic citation does not replace permission
+to redistribute third-party code, figures or publication text.
 
 ## Version-matched library source access
 
