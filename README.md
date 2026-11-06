@@ -2,7 +2,7 @@
 
 Local desktop tools for reviewed geological and geotechnical field records, borehole logs and reports.
 
-**[Download for Windows](https://github.com/javierloren/BoreholeDesk-downloads/releases)** · [User guide](USER_GUIDE.md) · [Verification and limits](QUALITY.md)
+**[Download for Windows](https://github.com/javierloren/BoreholeDesk-downloads/releases)** · [User guide](USER_GUIDE.md) · [Methods and data checks](QUALITY.md)
 
 ## Get started
 
@@ -26,16 +26,15 @@ GitHub's `Source code (zip)` archive contains this repository, not the Windows i
 - Geotechnical calculation tools, rock mass classifications and slope analysis.
 - PDF/HTML reports, data checks and a starter EN/ES technical glossary.
 
-## Preview status
+## Working with field data
 
-This is an initial preview for testing and feedback. Review all machine-proposed
-readings and measurements. Handwriting and photographic RQD remain experimental;
-specialist calculations require method-specific review. This release does not
-establish equivalence with a commercial engineering design suite.
+Review transcriptions beside the original field sheet, calibrate core photographs
+using measured row lengths, confirm depth blocks and apply the reviewed data to
+the borehole. The same project data support logs, sections and reports.
 
-The current installer is unsigned. Windows may display warnings; do not disable
-security protection or install unfamiliar root certificates. Clean Windows testing
-and independent professional acceptance remain pending.
+This preview is available for use and feedback. Windows can display an
+unknown-publisher notice for this unsigned installer. Check the official download
+source and published SHA-256; keep Windows security protections enabled.
 
 ## Licence and feedback
 

@@ -42,18 +42,14 @@ and 25 GB of free disk space are recommended for downloading, installing and
 retaining the package. A GPU is not required. First use of a model can take longer
 while its weights load into memory.
 
-### Preview status and download safety
+### Download checks
 
 This preview is **not digitally signed**. Windows may display an unknown-publisher
 or SmartScreen warning. Check the official source and published SHA-256; do not
 disable system protection or install an unfamiliar root certificate to suppress warnings.
 SHA-256 detects changed files; it does not establish publisher identity or certify
-engineering results. Installation has been exercised on the development Windows
-host with a normal user and restricted PATH. A clean Windows acceptance test is pending.
-
-If a release is not publicly accessible yet, a complete local folder with Packages
-can be used for testing. The EXE alone cannot fetch private or unpublished assets.
-Older base ZIP previews do not include the local OCR/segmentation/slope engines.
+engineering results. Obtain the installer from the official release page and keep
+it with its matching component assets when preparing for offline installation.
 
 ## 2. Create, edit and save a project
 
@@ -93,10 +89,9 @@ Ambiguous writing must remain literal until reviewed: for example, **48-11**
 must not automatically be interpreted as **48.11 m**. If no intervals are
 recognized, review the transcription; do not assume report data were added.
 
-Handwriting and whole-column readers are experimental. Their ability to produce
-text is not evidence of correctness on every author's writing. Review every
-proposed reading before adding it to a borehole or report. Engine confidence
-values are not a calibrated probability that a geotechnical interpretation is correct.
+Review the proposed text before adding it to a borehole or report. Reader confidence
+helps prioritize review; approval of the depth, units and geological meaning comes
+from comparison with the original field record.
 
 ## 4. Core photographs, recovery and RQD
 
@@ -123,7 +118,7 @@ combined results must be weighted by run length rather than averaging percentage
 Depth blocks remain part of the workflow. The apparent length of rock in a
 photograph does not establish drilled run length or missing core. Fracture
 interpretation and treatment of drilling-induced breaks require professional
-judgment. Segmentation performance is not a measurement of final RQD accuracy.
+judgment.
 Roboflow is used only if explicitly selected with the user's own configuration;
 the local model does not use a shared author API key.
 
@@ -137,12 +132,12 @@ save the section and export it to PDF.
 
 Check every exported page for content, units, scale, clipping and pagination.
 Interpretations must be distinguished from observed data. A PDF is an output,
-not an editable project backup. A successful export does not certify print scale
-or replace independent review of geological or engineering conclusions.
+not an editable project backup. When printing logs, use the appropriate actual-size
+setting and check the scale on the printed output.
 
 Specialist calculation tools require suitable parameters, units, groundwater
-conditions and method assumptions. Read their stated limitations. The preview
-does not establish equivalence with a validated commercial design suite.
+conditions and method assumptions. Check the selected method and its documented
+domain before using a result in an engineering assessment.
 
 ## 6. Save recovery and updates
 
@@ -155,8 +150,8 @@ Choose a new destination when saving and compare revisions before replacing
 anything. If a project is damaged, use **Save as** with another name; do not
 overwrite the damaged file or its backup while diagnosing the problem.
 
-This is one previous saved revision, not automatic saving of drafts or a complete
-undo history. On close, **Save** stores applied data. Unapplied drafts must be
+The backup retains one previous saved revision. Apply and save edits regularly.
+On close, **Save** stores applied data. Unapplied drafts must be
 applied or explicitly discarded. Canceling the close or a failed save keeps work open.
 Keep external copies of your projects and backups.
 
@@ -179,5 +174,3 @@ paths, credentials or environment values, and is not sent automatically. Review
 attachments, remove confidential information, and include the installer version
 and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
-Public preview feedback and independent professional acceptance are different
-milestones. The former helps improve the product; it does not imply the latter.
