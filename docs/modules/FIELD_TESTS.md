@@ -143,7 +143,7 @@ Results include Readings; Minimum apparent resistivity (ohm m); Maximum apparent
 \begin{aligned}\log_{10}W_{18}={}&Z_RS_0+7.35\log_{10}(D+1)-0.06\\&+\frac{\log_{10}(\Delta PSI/3)}{1+1.624\times10^7/(D+1)^{8.46}}\\&+(4.22-0.32p_t)\log_{10}\left[\frac{S_cC_d(D^{0.75}-1.132)}{215.63J\left(D^{0.75}-18.42/(E_c/k)^{0.25}\right)}\right]\end{aligned}
 ```
 
-This is the empirical form displayed in FHWA NHI-05-037, chapter 3, equation 3.11. W18 is design 80 kN ESAL traffic, ZR the normal deviate for reliability, S0 overall standard deviation, ΔPSI=pi−pt serviceability loss, Sc flexural strength, Ec concrete modulus, k effective support, J load-transfer and Cd drainage coefficient. The equation kernel uses D in inches, Sc/Ec in psi and k in pci; interface SI entries are converted explicitly. The increasing equation branch is solved within the selected thickness bounds and rounded upward to the specified increment. Optional drawn subbase thickness does not automatically recalculate effective k.
+This is the empirical form displayed in the FDOT Rigid Pavement Design Manual (July 2004), figure 3.1. W18 is design 80 kN ESAL traffic, ZR the normal deviate for reliability, S0 overall standard deviation, ΔPSI=pi−pt serviceability loss, Sc flexural strength, Ec concrete modulus, k effective support, J load-transfer and Cd drainage coefficient. The equation kernel uses D in inches, Sc/Ec in psi and k in pci; interface SI entries are converted explicitly. The increasing equation branch is solved within the selected thickness bounds and rounded upward to the specified increment. Optional drawn subbase thickness does not automatically recalculate effective k.
 
 ### Inputs and units
 

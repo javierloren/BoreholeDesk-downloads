@@ -221,10 +221,12 @@ on the method card.
 <a id="pavement"></a>
 ## Rigid pavement
 
-FHWA (2006), *Geotechnical Aspects of Pavements*, FHWA NHI-05-037,
-chapter 3, equation 3.11: AASHTO 1993 rigid pavement equation, including
+Florida Department of Transportation (July 2004), *Rigid Pavement Design Manual*,
+document 625-010-006-c, figure 3.1: AASHTO 1993 rigid pavement equation, including
 the coefficient 1.624×10⁷ used in the application.
-[Chapter 3](https://www.fhwa.dot.gov/engineering/geotech/pubs/05037/03b.cfm).
+[FDOT manual](https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/content/roadway/pm/publications/RPDM200407.pdf).
+For parameter discussion, see FHWA NHI-05-037, chapter 6 and appendix C.
+[FHWA reference](https://www.fhwa.dot.gov/engineering/geotech/pubs/05037/06a.cfm).
 The original empirical kernel uses inches, psi and pci; SI conversions are explicit.
 
 <a id="slopes"></a>
