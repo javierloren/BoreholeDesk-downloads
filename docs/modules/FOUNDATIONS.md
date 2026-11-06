@@ -104,7 +104,7 @@ Results include Nc; Nq; Ngamma; sc; sq; sgamma; Cohesion contribution (kPa); Sur
 ```math
 \begin{gathered}
 e=\frac MN,\qquad q_{max,min}=\frac{N}{BL}\left(1\mathbin{\pm}\frac{6|e|}{B}\right)\quad(|e|\leq B/6)\\
-a=3\left(\frac B2-|e|\right),\qquad q_{max}=\frac{2N}{La}\quad(B/6<|e|<B/2)
+a=3\left(\frac B2-|e|\right),\qquad q_{max}=\frac{2N}{La}\quad(B/6\lt |e|\lt B/2)
 \end{gathered}
 ```
 

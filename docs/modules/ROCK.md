@@ -58,7 +58,7 @@ Results include Measured planes; Nonparallel pair intersections; Parallel pairs 
 ### Formulation
 
 ```math
-\tan\beta_{app}=\tan\beta_{face}\cos\Delta d,\qquad \phi_j<\beta_j<\beta_{app}
+\tan\beta_{app}=\tan\beta_{face}\cos\Delta d,\qquad \phi_j\lt \beta_j\lt \beta_{app}
 ```
 
 The inequality describes the planar angular screen, together with the selected lateral-direction half-width. βface is face dip, Δd directional separation, βj joint dip and φj adopted common friction. The primary wedge-line screen requires intersection plunge above friction and below apparent face dip in the intersection direction. Flexural toppling uses inward-dipping joints and a positive margin between apparent (face dip−friction) and pole plunge. Strict angular inequalities define candidates; equality is a boundary. Counts are geometric candidates, not failure probabilities or factors of safety.
