@@ -6,12 +6,12 @@ Following Deere and Deere (1989), RQD is the percentage of the core run formed
 by sound core pieces at least 100 mm long, measured along the core axis [1].
 The metric definition is expressed as:
 
-$$
+```math
 \mathrm{RQD}\;(\%) = \frac{\sum_{i=1}^{n} L_i}{L}\times 100
-$$
+```
 
-- $L_i$: length of each sound core piece with $L_i \geq 100\,\mathrm{mm}$ (10 cm).
-- $L$: total length of the core run being assessed, including unrecovered intervals.
+- **Lᵢ**: length of each sound core piece with **Lᵢ ≥ 100 mm** (10 cm).
+- **L**: total length of the core run being assessed, including unrecovered intervals.
 - Use the same length unit in the numerator and denominator.
 
 The inclusive 100 mm boundary and axial measurement are supported by Deere and
@@ -24,9 +24,9 @@ are included; image segmentation supplies measurements for review.
 
 For a 100 cm run with sound pieces of 60, 20, 10, 5 and 5 cm:
 
-$$
+```math
 \mathrm{RQD} = \frac{60+20+10}{100}\times100 = 90\%
-$$
+```
 
 This is an illustrative arithmetic example, not a reproduced field case.
 
@@ -35,11 +35,11 @@ This is an illustrative arithmetic example, not a reproduced field case.
 Core recovery is the recovered core length divided by the drilled run length,
 expressed as a percentage [3, section 3.6.5.4]:
 
-$$
+```math
 \mathrm{Recovery}\;(\%) = \frac{L_r}{L}\times100
-$$
+```
 
-$L_r$ is the total recovered core length; $L$ is the corresponding drilled run
+**Lᵣ** is the total recovered core length; **L** is the corresponding drilled run
 length. Recovery and RQD are different quantities and are recorded separately.
 For multiple runs, add the relevant lengths before calculating the percentage;
 do not take an unweighted average of run percentages.
