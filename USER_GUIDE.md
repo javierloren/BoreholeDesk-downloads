@@ -2,15 +2,17 @@
 
 BoreholeDesk is a desktop application for geological and geotechnical field
 records, borehole logs, core photographs, interpretation and reports. This guide
-describes the **0.1.3-preview.2 Windows x64 preview**. Public user documentation
+describes **BoreholeDesk for Windows x64**. Public user documentation
 is maintained in English; source documents may be in English or Spanish.
 
 ## 1. Download and install
 
-1. Open the official release page and choose the version you want to test.
-2. Download **Quick-Windows-x64.exe** for a quick trial or
-   **Complete-Windows-x64.exe** for all local readers. Do not use GitHub's
-   **Code > Download ZIP** or **Source code** archives to install the application.
+1. Open the [official BoreholeDesk download page](https://github.com/javierloren/BoreholeDesk-downloads)
+   and follow its **Download for Windows** link.
+2. In **Assets**, choose the installer ending in **Complete-Windows-x64.exe**
+   if you want to work with handwritten field sheets from the start.
+   Choose **Quick-Windows-x64.exe** for printed OCR and the core tools.
+   GitHub's **Source code** archives are for source access.
 3. Run the installer. It installs for your current Windows user without requiring
    administrator rights, a separate Python installation or a Roboflow account.
 4. The installer preselects the choice named in your download. Follow its progress.
@@ -32,11 +34,12 @@ After installation finishes, press **Read page(s)** again; your project stays op
 
 ### Offline installation
 
-For a prepared offline installation, place the ten matching component files from
-the [technical component release](https://github.com/javierloren/BoreholeDesk-downloads/releases/tag/v0.1.3-preview.1)
-in a **Packages** folder beside
-the EXE, then run the installer. Do not extract, rename or mix component files
-from different releases. The installer verifies and restores them itself.
+For a prepared offline installation, download the
+[matching component list](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3-components/downloads.json).
+Its `packages` entries give the ten filenames and public download links used by
+these installers. Put those files in a **Packages** folder beside the EXE, then
+run the installer. Keep filenames intact and use the matching list; the installer
+verifies and restores the files itself.
 Install all readers you will need before going to a site without internet access.
 Keep the installer and matching packages if you want to repair the installation offline.
 
@@ -47,9 +50,9 @@ while its weights load into memory.
 
 ### Download checks
 
-This preview is **not digitally signed**. Windows may display an unknown-publisher
-or SmartScreen warning. Check the official source and published SHA-256; do not
-disable system protection or install an unfamiliar root certificate to suppress warnings.
+Check the publisher shown by Windows and the SHA-256 published with the download.
+Keep system protection enabled. If Windows blocks the installer, report the
+installer name, version and warning to the download maintainer.
 SHA-256 detects changed files; it does not establish publisher identity or certify
 engineering results. Obtain the installer from the official release page and keep
 it with its matching component assets when preparing for offline installation.
@@ -86,6 +89,9 @@ your complete original PDF or your own document archive.
    sample identifiers, decimal separators, units and crossed-out notes.
 6. Correct the text, then use **Prepare intervals** and **Apply and preview**
    only after reviewing the proposed structured data.
+7. In the report preview, check the intervals against the original. Choose
+   **Export PDF...** to save the report, and save the project to keep the source
+   document and reviewed data together.
 
 A depth description can be written as `5.00-5.40: Light brown clayey sand`.
 Ambiguous writing must remain literal until reviewed: for example, **48-11**
@@ -131,6 +137,20 @@ RQD, water levels and units before exporting. In **Geological sections**, use
 coordinates and elevations. Review borehole ordering and interpreted contacts,
 save the section and export it to PDF.
 
+For an existing scanned section, choose **Interpreted contacts > Digitize scanned
+section...** in a spatial section. Open the image or PDF, select the page, pick
+upper-left and lower-right grid references and enter their station/elevation in
+metres. Pick contact vertices, add them for review, then review and save the
+section. Use an axis-aligned scan and the same station origin and elevation datum
+as your section. Keep the original document with your project files. See the
+[section workflow](GEOLOGICAL_SECTIONS.md#digitize-a-scanned-section).
+
+**Source image** displays the calibrated preview saved with the project.
+**Interpreted units** defines colored and patterned units between named contacts;
+crossings and overlaps are rejected. Use **Unit colors / patterns** to compare
+the fills with the reference image. Review and save the chosen display before
+exporting; the same settings apply to the section PDF/SVG and full report.
+
 Check every exported page for content, units, scale, clipping and pagination.
 Interpretations must be distinguished from observed data. A PDF is an output,
 not an editable project backup. When printing logs, use the appropriate actual-size
@@ -171,7 +191,7 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
 ## 8. Calculation references
 
-The [complete module reference](MODULES.md) documents all 35 calculation worksheets,
+The [complete module reference](MODULES.md) documents all 36 calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
 RQD: Deere, D. U., and Deere, D. W. (1989), *Rock Quality Designation (RQD) after
