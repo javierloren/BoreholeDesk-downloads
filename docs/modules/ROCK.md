@@ -141,6 +141,20 @@ RMR_{basic}=R_{strength}+R_{RQD}+R_{spacing}+R_{condition}+R_{water},\qquad RMR=
 
 The worksheet assigns the RMR89 strength, RQD, spacing, joint-condition and groundwater ratings from the entered observations. Strength uses UCS or corrected point-load index Is(50) with its applicable range. Detailed joint condition sums persistence, aperture, roughness, weathering and a no-infill contribution; filled joints use the overall A.4 selection. The selected tunnel/mine orientation adjustment is applied separately. Shared numerical endpoints use the lower rating. Review each contribution before accepting the resulting class.
 
+### Desktop workflow
+
+Open **RMR rating guide** to inspect the rating ranges. Select a categorical
+description to apply it to the case; selecting a numeric parameter opens its
+measured input without assigning a representative value. The guide highlights
+the current valid calculation. Editing inputs clears these highlights until
+the case is recalculated.
+
+Use **Export RMR card PNG...** for a 300 dpi classification sheet containing
+the measurements, component scores, basic and corrected RMR, rock class and
+bibliographic reference. The numerical total is retained even when negative.
+The existing calculation PDF includes the full input record and method notes.
+Both exports require a current valid result.
+
 ### Inputs and units
 
 | Input |

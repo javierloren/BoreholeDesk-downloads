@@ -194,6 +194,12 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 The [complete module reference](MODULES.md) documents all 36 calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
+For **RMR 1989 - tunnels and mines**, use **RMR rating guide** to inspect ranges
+and select observed categories. Enter measured strength, RQD and spacing in
+their stated units. **Export RMR card PNG...** saves a 300 dpi classification
+sheet with inputs, component ratings, rock class and the method reference.
+Recalculate after editing inputs before exporting a PNG or calculation PDF.
+
 RQD: Deere, D. U., and Deere, D. W. (1989), *Rock Quality Designation (RQD) after
 Twenty Years*, Contract Report GL-89-1. The [official NTIS abstract](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/ADA207597.xhtml)
 supports sound pieces at least 100 mm long and measurement along the core axis.
