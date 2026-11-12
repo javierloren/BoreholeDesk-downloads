@@ -1,6 +1,6 @@
 # Structural geology and rock mass classification
 
-[Module index](../../MODULES.md) · [Bibliography](BIBLIOGRAPHY.md)
+[Module index](../MODULES.md) · [Bibliography](BIBLIOGRAPHY.md)
 
 Open **Computation > Calculation worksheet**, choose the named method, enter the parameters and tables, then calculate. Review the schedule and method conditions, save the case to the project and export its calculation report. The following equations describe the implemented variant; symbols are local to each method.
 
@@ -43,6 +43,12 @@ t is line trend clockwise from north and p plunge downward. The vector axes are 
 ### Outputs and application
 
 Results include Measured planes; Nonparallel pair intersections; Parallel pairs excluded.
+Enter one manually selected family per case. For two or more planes, the worksheet
+reports the mean dip direction, mean dip and mean pole resultant length, and
+marks the mean pole on the stereonet. The mean is obtained by summing equally
+weighted lower-hemisphere unit poles after the azimuth correction. A horizontal
+mean plane has no dip direction. A vanishing resultant leaves the mean undefined.
+Use separate cases for mixed families.
 
 **Application conditions:** Projection: Schmidt 0 / Wulff 1. Dip direction 0..360 deg, dip 0..90 deg, azimuth correction -180..180 deg. Lower hemisphere; 1..200 planes per case.
 

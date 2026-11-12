@@ -49,7 +49,6 @@ marks the mean pole on the stereonet. The mean is obtained by summing equally
 weighted lower-hemisphere unit poles after the azimuth correction. A horizontal
 mean plane has no dip direction. A vanishing resultant leaves the mean undefined.
 Use separate cases for mixed families.
-[Dips Verification Manual, problem 1](https://static.rocscience.cloud/assets/verification-and-theory/Dips/Dips-Verification-Manual.pdf).
 
 **Application conditions:** Projection: Schmidt 0 / Wulff 1. Dip direction 0..360 deg, dip 0..90 deg, azimuth correction -180..180 deg. Lower hemisphere; 1..200 planes per case.
 

@@ -1,4 +1,4 @@
-# Calculation methods and data checks
+# Calculation methods
 
 For all engineering methods, see the [complete module reference](MODULES.md).
 
@@ -52,17 +52,6 @@ Calibrate each photographed row using its measured physical length. A 60 cm row
 is a calibration length, not automatically the length of a drilled run. Use the
 depth blocks and drilling record to establish the run boundaries and core losses.
 Review scale, piece boundaries and soundness before applying the calculated runs.
-
-## Data checks
-
-| Area | Checks and workflow |
-| --- | --- |
-| Borehole records | Depth ranges, overlapping intervals, run lengths and numeric consistency |
-| Project files | Validated saves, previous-save recovery and save/reopen checks |
-| Field sheets | Original and reviewed text, with explicit application of interpreted intervals |
-| Core photographs | Physical calibration, depth blocks and reviewed measurements |
-| Logs and reports | Saved project data feed log and report views |
-| Installation | Component SHA-256 verification, selected-reader installation and repair |
 
 ## References
 

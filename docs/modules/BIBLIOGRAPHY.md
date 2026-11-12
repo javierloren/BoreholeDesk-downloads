@@ -1,11 +1,10 @@
 # Technical bibliography
 
-[Module index](../../MODULES.md)
+[Module index](../MODULES.md)
 
 Method cards identify the specific formulation and application conditions used
 by BoreholeDesk. The references below establish the scientific or engineering
-basis; a reference to a publication or software theory manual is not a claim of
-certification, endorsement or numerical equivalence with another product.
+basis. Citations identify the formulation and its application conditions.
 Equations are presented in the notation used to explain the implementation.
 Original books, figures, graphical charts and private workbooks are not reproduced.
 
@@ -16,6 +15,14 @@ Kimmerling, R. E. (2002). *Geotechnical Engineering Circular No. 6: Shallow
 Foundations*, FHWA-SA-02-054. Bearing resistance: chapter 5, tables 5-1/5-2 and
 equation 5-14. Eccentric loading/contact: section 6.6, figure 6-6 and equations
 6-9 to 6-13. [FHWA report](https://highways.dot.gov/media/3156).
+
+<a id="biaxial_contact"></a>
+## Biaxial footing contact
+
+Bellos, J. and Bakas, N. P. (2016). *High Computational Efficiency through
+Generic Analytical Formulation for Linear Soil Pressure Distribution of Rigid
+Spread Rectangular Footings*. ECCOMAS, section 5.4 and equations 41–43.
+[Conference paper](https://www.eccomas2016.org/proceedings/pdf/5100.pdf).
 
 <a id="settlement"></a>
 ## Stress distribution and primary consolidation
@@ -28,11 +35,21 @@ manual. Boussinesq superposition and base-10 compression/recompression equations
 <a id="elastic_columns"></a>
 ## Vertical elastic-strain integration
 
-*Settle3 Settlement and Consolidation Theory Manual*, section 3.1, elastic-strain
-framework. BoreholeDesk integrates rectangular-load stress increments through
+U.S. Army Corps of Engineers (1990). *Settlement Analysis*, EM 1110-1-1904:
+stress-distribution and vertical-strain framework. BoreholeDesk integrates rectangular-load stress increments through
 independent layers with supplied constrained moduli and a fixed-bottom condition.
-This citation identifies the public theoretical framework, not the proprietary
-solver. [Theory manual](https://static.rocscience.cloud/assets/verification-and-theory/Settle3/Settle3-Settlement-and-Consolidation-Theory-Manual.pdf).
+[USACE manual](https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-1-1904.pdf).
+
+<a id="sand_stiffness"></a>
+## Preliminary soil stiffness references
+
+FHWA (2010), *Drilled Shafts: Construction Procedures and LRFD Design Methods*,
+FHWA-NHI-10-016, Table 3-6, p. 3-17 (after AASHTO 2007). The input guide converts
+the Young modulus ranges for sand and fine sand from ksf to kPa and rounds to
+the nearest 100 kPa. Select the design modulus for the site and the working
+strain. Where the worksheet requires constrained modulus M, use site data
+or justify an isotropic elastic conversion.
+[FHWA manual](https://highways.fhwa.dot.gov/sites/fhwa.dot.gov/files/FHWA-NHI-10-016_0.pdf).
 
 <a id="schmertmann"></a>
 ## Strain-influence settlement
@@ -136,10 +153,11 @@ identifies the angular screens implemented and distinguishes them from equilibri
 <a id="wedge"></a>
 ## Explicit rock-block geometry
 
-*UnWedge Theory Manual*, wedge geometry discussion.
-[Public theory manual](https://static.rocscience.cloud/assets/verification-and-theory/UnWedge/Unwedge-Theory-Manual.pdf).
+Goodman, R. E., and Shi, G.-H. (1985). *Block Theory and Its Application to Rock Engineering*. Prentice-Hall.
+Goodman, R. E. (1995). *Block Theory and Its Application*, 35th U.S. Symposium on Rock Mechanics, ARMA-95-0003.
+[Author's paper](https://onepetro.org/ARMAUSRMS/proceedings-abstract/ARMA95/ARMA95/ARMA-95-0003/130565).
 BoreholeDesk accepts an explicit tetrahedron and evaluates its geometry and a
-strict gravity-release condition. It does not reproduce the UnWedge analysis engine.
+strict gravity-release condition. Automatic block searches and equilibrium analysis are outside this method's scope.
 
 <a id="rmr89"></a>
 ## RMR 1989

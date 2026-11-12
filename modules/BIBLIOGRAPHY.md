@@ -4,8 +4,7 @@
 
 Method cards identify the specific formulation and application conditions used
 by BoreholeDesk. The references below establish the scientific or engineering
-basis; a reference to a publication or software theory manual is not a claim of
-certification, endorsement or numerical equivalence with another product.
+basis. Citations identify the formulation and its application conditions.
 Equations are presented in the notation used to explain the implementation.
 Original books, figures, graphical charts and private workbooks are not reproduced.
 
@@ -36,11 +35,10 @@ manual. Boussinesq superposition and base-10 compression/recompression equations
 <a id="elastic_columns"></a>
 ## Vertical elastic-strain integration
 
-*Settle3 Settlement and Consolidation Theory Manual*, section 3.1, elastic-strain
-framework. BoreholeDesk integrates rectangular-load stress increments through
+U.S. Army Corps of Engineers (1990). *Settlement Analysis*, EM 1110-1-1904:
+stress-distribution and vertical-strain framework. BoreholeDesk integrates rectangular-load stress increments through
 independent layers with supplied constrained moduli and a fixed-bottom condition.
-This citation identifies the public theoretical framework, not the proprietary
-solver. [Theory manual](https://static.rocscience.cloud/assets/verification-and-theory/Settle3/Settle3-Settlement-and-Consolidation-Theory-Manual.pdf).
+[USACE manual](https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-1-1904.pdf).
 
 <a id="sand_stiffness"></a>
 ## Preliminary soil stiffness references
@@ -155,10 +153,11 @@ identifies the angular screens implemented and distinguishes them from equilibri
 <a id="wedge"></a>
 ## Explicit rock-block geometry
 
-*UnWedge Theory Manual*, wedge geometry discussion.
-[Public theory manual](https://static.rocscience.cloud/assets/verification-and-theory/UnWedge/Unwedge-Theory-Manual.pdf).
+Goodman, R. E., and Shi, G.-H. (1985). *Block Theory and Its Application to Rock Engineering*. Prentice-Hall.
+Goodman, R. E. (1995). *Block Theory and Its Application*, 35th U.S. Symposium on Rock Mechanics, ARMA-95-0003.
+[Author's paper](https://onepetro.org/ARMAUSRMS/proceedings-abstract/ARMA95/ARMA95/ARMA-95-0003/130565).
 BoreholeDesk accepts an explicit tetrahedron and evaluates its geometry and a
-strict gravity-release condition. It does not reproduce the UnWedge analysis engine.
+strict gravity-release condition. Automatic block searches and equilibrium analysis are outside this method's scope.
 
 <a id="rmr89"></a>
 ## RMR 1989

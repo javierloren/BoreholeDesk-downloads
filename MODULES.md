@@ -81,4 +81,4 @@ Choose the exact method and edition for the question being assessed. Check the i
 
 Save the case inputs and the field or test evidence used to select parameters. Recalculate after changes and review intermediate schedules before exporting. Clearly identify observed values, adopted parameters and interpretations. Separate numerical verification of a method from its suitability for a particular site.
 
-The explanations and equation notation in this reference describe BoreholeDesk. Referenced books, reports and scientific papers remain with their authors and publishers; source figures, private workbooks and commercial software are not reproduced here. Software/model licences and required attributions are listed in [Third-party notices](THIRD_PARTY_NOTICES.md).
+The explanations and equation notation in this reference describe BoreholeDesk. Referenced books, reports and scientific papers remain with their authors and publishers. Software/model licences and required attributions are listed in [Third-party notices](THIRD_PARTY_NOTICES.md).

@@ -113,7 +113,7 @@ In **Interpreted units**, use **Add unit**, give the unit a label and select its
 upper and lower contact by their unique names. Set a `#RRGGBB` color and choose a
 pattern. Color and pattern are user interpretations. These are the same
 BoreholeDesk schematic renderings referenced to FGDC-STD-013-2006 section 37 used
-for lithological logs, rather than artwork copied from another application.
+for lithological logs.
 
 The fill uses only the contacts' common station interval, with linear
 interpolation between entered vertices. Crossed/reversed boundaries, overlaps
