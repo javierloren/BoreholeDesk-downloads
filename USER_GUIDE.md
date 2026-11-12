@@ -79,6 +79,28 @@ your complete original PDF or your own document archive.
 
 ## 3. Read and review a field sheet
 
+### Import or export campaign tables
+
+**File > Import campaign tables…** accepts CSV, TSV and XLSX files for locations,
+geology intervals, field records and core runs. Select each sheet and map its
+columns. Choose the depth/elevation unit, numeric decimal convention and source
+CRS explicitly; X/Y coordinates follow the CRS units. Read the proposed additions
+and updates before applying them. Replacing populated values requires the update
+option; omitted populated columns or sheets require acknowledgment. An invalid
+batch leaves the project unchanged.
+
+**File > Save blank campaign template…** creates the four-sheet XLSX template.
+**File > Export campaign workbook…** exports the same structure and assigns stable
+field-record/sample identities where needed. Save the project after exporting to
+retain those identities, and keep their columns intact when editing the workbook.
+Sample labels alone are not unique identities. This exchange does not transfer
+source attachments, page links, photograph annotations or approvals; keep the
+`.boreholedesk.json` project as the editable backup. Ambiguous observation text
+remains literal. Spreadsheet formulas must be replaced with reviewed values
+in a copy before import.
+
+### Read a scanned page
+
 1. Use an empty borehole when testing a sheet that would overlap existing intervals.
 2. In **Field sheets / OCR**, import a supported PDF or image.
 3. Choose **Local OCR (RapidOCR)** for printed text or a handwriting reader for

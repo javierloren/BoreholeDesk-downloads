@@ -94,12 +94,18 @@ The inclination factor follows DB SE-C Annex F, equation F.6, using effective di
 
 ```math
 \begin{gathered}
-q_u=c'N_c s_c+q'N_q s_q+\frac12\gamma' B N_\gamma s_\gamma\\
+q_u=c'N_c s_c+q'N_q s_q+\frac12\gamma' B_{\mathrm{eff}} N_\gamma s_\gamma\\
 N_q=e^{\pi\tan\phi'}\tan^2\left(45^\circ+\frac{\phi'}2\right),\quad N_c=\frac{N_q-1}{\tan\phi'},\quad N_\gamma=2(N_q+1)\tan\phi'
 \end{gathered}
 ```
 
-c′ and φ′ are effective strength parameters; q′ is effective overburden at the base and γ′ the adopted effective unit weight below it. For B≤L and L/B<5, sc=1+(B/L)Nq/Nc, sq=1+(B/L)tanφ′ and sγ=1−0.4B/L. At φ′=0 use Nc=π+2, Nq=1, Nγ=0, sc=1+B/(5L), sq=sγ=1. Strip factors equal one for L/B≥5. The worksheet distinguishes qu/Fs from q′+(qu−q′)/Fs; select the convention appropriate to the project. The supplied vertical load is a centred gross effective resultant.
+c′ and φ′ are effective strength parameters; q′ is effective overburden at the base and γ′ the adopted effective unit weight below it. For original B≤L and L/B<5, sc=1+(B/L)Nq/Nc, sq=1+(B/L)tanφ′ and sγ=1−0.4B/L. At φ′=0 use Nc=π+2, Nq=1, Nγ=0, sc=1+B/(5L), sq=sγ=1. Strip factors equal one for L/B≥5. Original dimensions determine shape factors, following FHWA section 5.2.4.
+
+Base moments give eB=|M_B/V| and eL=|M_L/V|, B′=B−2eB, L′=L−2eL and A′=B′L′ (FHWA equations 6-6/6-7). The weight term uses the smaller of B′ and L′; applied bearing pressure is V/A′. This effective area is not the actual compression-only contact area. Blank moments mean zero. Include horizontal-load lever arms in the supplied base moments.
+
+Choose **Supplied effective stresses** to enter q′ and γ′ directly, or **FHWA water factors (Table 5-3)** to supply uniform soil unit weight, base depth Df and water depth Dw below ground. Blank Dw means dry. The latter interpolates CWq from 0.5 at ground to 1 at the base, and CWγ from 0.5 at/below the base to 1 at Df+1.5Beff. Then q′=γDfCWq and γ′=γCWγ. These are the table's simplified half-weight approximations, not an exact hydrostatic integration with measured saturated weights. The two approaches are alternatives; water corrections are applied once.
+
+The worksheet distinguishes qu/Fs from q′+(qu−q′)/Fs; select the convention appropriate to the project. For horizontal resultant H>0, enter interface friction δ and the required sliding safety factor. Frictional sliding uses FR=Vtanδ and FSsliding=FR/H (FHWA equations 5-38/5-40), without adhesion or passive resistance. V must be the justified simultaneous effective stabilizing load after uplift. Separate bearing and sliding follow section 5.2.3.7; no additional load-inclination factor is multiplied into the shape-corrected bearing resistance. Unusual loading configurations require separate assessment.
 
 ### Inputs and units
 
@@ -112,13 +118,24 @@ c′ and φ′ are effective strength parameters; q′ is effective overburden a
 | Effective surcharge at base q (kPa) |
 | Effective unit weight below base (kN/m3) |
 | Comparison safety factor (>=1) |
-| Centred gross effective vertical load (kN) |
+| Gross effective vertical resultant V (kN) |
+| Base moment causing eccentricity across B (kN m; blank = 0) |
+| Base moment causing eccentricity across L (kN m; blank = 0) |
+| Water treatment |
+| Base depth Df below ground (m; water-factor method) |
+| Uniform soil unit weight (kN/m3; water-factor method) |
+| Water depth Dw below ground (m; blank = dry) |
+| Horizontal resultant H at base (kN; blank = 0) |
+| Drained base friction angle delta (deg; sliding) |
+| Required sliding safety factor (>=1) |
 
 ### Outputs and application
 
 Results include Nc; Nq; Ngamma; sc; sq; sgamma; Cohesion contribution (kPa); Surcharge contribution (kPa); Weight contribution (kPa); Gross ultimate pressure (kPa); Net ultimate pressure (kPa); Net allowable pressure (kPa); Gross-basis allowable pressure (kPa); Net-basis allowable gross pressure (kPa); Applied gross effective pressure (kPa).
 
-**Application conditions:** 0 <= phi <= 45 deg; 0 < B <= L; c,q >=0; gamma_eff,V >0; FS >=1. L/B >=5 uses strip factors. Homogeneous general shear, centred vertical load, level ground/base; no depth-resistance credit.
+The Geometry tab and PDF show the footing plan, load-resultant location, effective bearing area and selected water scenario. Results also include effective dimensions, the water factors when selected, and frictional sliding when H>0.
+
+**Application conditions:** 0 <= phi <= 45 deg; 0 < B <= L; c,q >=0; gamma,V >0; FS >=1. The resultant must lie inside the footing in both directions. H>0 requires phi>0 and 0<=δ<=phi. Homogeneous general shear, level ground/base; no depth-resistance credit, settlement, slope, compressibility, torsion or layered-ground verification. Outside the full-contact kern, review contact and rotation independently.
 
 **References:** [gec6](BIBLIOGRAPHY.md#gec6).
 

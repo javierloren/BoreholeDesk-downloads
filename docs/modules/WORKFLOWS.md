@@ -1,6 +1,6 @@
 # Field records, boreholes and reports
 
-[Module index](../../MODULES.md) · [User guide](../../USER_GUIDE.md)
+[Module index](../MODULES.md) · [User guide](../USER_GUIDE.md)
 
 ## Projects and boreholes
 
@@ -38,7 +38,7 @@ Calculate the reviewed runs and explicitly save them to the borehole.
 
 RQD includes sound pieces **at least 10 cm** long measured along the core axis.
 Recovery and RQD have different numerators and use the corresponding drilled
-run length. See the [RQD and recovery reference](../../QUALITY.md) for equations
+run length. See the [RQD and recovery reference](../QUALITY.md) for equations
 and primary sources. Source observations and interpreted/calculated results
 should remain distinguishable in the record.
 
@@ -60,6 +60,14 @@ export it to PDF. A drawn contact is an interpretation, not an automatically
 verified geological boundary. Ground sections can supply slope geometry with
 source provenance; material strength and groundwater remain engineering inputs.
 
+**Digitize scanned section** calibrates an image/PDF to known station/elevation
+references and adds manually picked contacts for review. **Source image** displays
+the calibrated preview retained in the project. **Interpreted units** fills the
+common extent between named upper/lower contacts with a user-selected color and
+pattern; crossed limits and overlapping units are rejected. Source-image and
+unit visibility settings are saved and used by PDF/SVG and complete reports.
+See the [section workflow](../GEOLOGICAL_SECTIONS.md).
+
 ## Site plan and location exchange
 
 **File > Import investigation locations** reads supported collar/location tables
@@ -75,6 +83,19 @@ because a file has been imported.
 
 ## Samples and campaign data checks
 
+**File > Import campaign tables…** reads CSV, TSV and XLSX into four supported
+tables: Locations, Geology, FieldRecords and CoreRuns. Review the source preview,
+map columns and select depth/elevation units, decimal convention and source CRS.
+The complete batch is checked before applying it. Updates to existing populated
+values are opt-in; omitted populated source columns and sheets need acknowledgment.
+Invalid intervals or conflicting identities prevent the batch from being applied.
+
+**Save blank campaign template…** and **Export campaign workbook…** use the same
+four-sheet XLSX structure. Export assigns stable record identities and identities
+for actual samples; save the project afterward to retain them. Preserve identity
+columns for repeat imports. The workbook exchanges tabular observations; it does
+not replace the project backup or transfer source attachments and approval states.
+
 **Tools > Sample register** provides a project-level view of sample records.
 **Tools > Campaign quality** brings together checks for inconsistent depths,
 identifiers and project data requiring review. Resolve flagged records against
@@ -83,7 +104,7 @@ strength or the representativeness of a sample.
 
 ## Calculation worksheets
 
-The [calculation catalogue](../../MODULES.md) documents every worksheet exposed in
+The [calculation catalogue](../MODULES.md) documents every worksheet exposed in
 **Computation**. A case stores selected methods and inputs; calculation produces
 the schedules, graphs and outputs for review. Record the basis of adopted
 parameters and factors. Recalculate after changing a case and inspect numerical

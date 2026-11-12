@@ -1,6 +1,6 @@
 # Shallow foundations and settlement
 
-[Module index](../../MODULES.md) · [Bibliography](BIBLIOGRAPHY.md)
+[Module index](../MODULES.md) · [Bibliography](BIBLIOGRAPHY.md)
 
 Open **Computation > Calculation worksheet**, choose the named method, enter the parameters and tables, then calculate. Review the schedule and method conditions, save the case to the project and export its calculation report. The following equations describe the implemented variant; symbols are local to each method.
 
@@ -24,11 +24,13 @@ Open **Computation > Calculation worksheet**, choose the named method, enter the
 ```math
 \begin{gathered}
 B'=B-2\frac{|M_y|}{N},\quad L'=L-2\frac{|M_x|}{N},\quad q_d=\frac{N}{B'L'}\\
-q_{u,net}=N_c s_u,\qquad q_{a,gross}=\frac{N_c s_u}{F_s}+\gamma D
+q_{u,net}=N_c s_u,\qquad q_{a,gross}=\frac{N_c s_u}{F_s}+\gamma D\\
+p(x,y)=\max(0,a+b_xx+b_yy),\quad \int_A p\,dA=N,\quad
+\int_A xp\,dA=M_y,\quad \int_A yp\,dA=M_x
 \end{gathered}
 ```
 
-B and L are the base dimensions; N is the total vertical resultant; Mx and My act about the stated axes. su is undrained strength, Nc the selected geometry factor, D embedment and Fs the net-resistance safety factor. The effective area is a resistance idealization. The separate full-contact trial uses 6|My|/(NB)+6|Mx|/(NL) ≤ 1 as the biaxial kern condition. Outside it, inspect compression-only contact separately.
+B and L are the base dimensions; N is the total vertical resultant; Mx and My act about the stated axes. su is undrained strength, Nc the selected geometry factor, D embedment and Fs the net-resistance safety factor. The effective area is a resistance idealization. The full-contact trial uses 6|My|/(NB)+6|Mx|/(NL) ≤ 1 as the biaxial kern condition. Outside it, the worksheet fits the pressure plane coefficients to the three equilibrium equations on the rectangular base and reports the positive pressure zone separately.
 
 ### Inputs and units
 
@@ -44,14 +46,42 @@ B and L are the base dimensions; N is the total vertical resultant; Mx and My ac
 | Moment about X (kN m) |
 | Moment about Y (kN m) |
 | Net capacity safety factor |
+| Undrained interface adhesion (kPa; optional) |
+| Sliding resistance factor (optional) |
+
+**Optional actions table:** Action and source reference; Vertical force (+ down, kN); Horizontal force X (kN); Horizontal force Y (kN); Application X (m); Application Y (m); Application Z above base (m); Applied moment (+ loads +Y, kN m); Applied moment (+ loads +X, kN m).
+
+Enter one already assembled load combination per saved case. With this table, leave the direct N, Mx and My fields blank. Enter weights as positive vertical forces and uplift as negative. Use the centre of the footing base as the origin. The table adds the following lever terms to the supplied couples:
+
+```math
+M_x=\sum_i (M_{x,i}+y_i N_i+z_i H_{y,i}),\qquad M_y=\sum_i(M_{y,i}+x_i N_i+z_i H_{x,i})
+```
+
+The reported X and Y moments use the pressure signs in the input labels. Torsion from horizontal force offsets is reported as Σ(xHy−yHx). Blank force and couple components are zero. Enter the applicable lever coordinates explicitly, including zero at the origin. Keep the input and base schedules together when reviewing the combination.
 
 ### Outputs and application
 
 Results include Effective width (m); Effective length (m); Effective area (m2); Gross demand (kPa); Net ultimate resistance (kPa); Gross ultimate resistance (kPa); Gross allowable pressure (kPa); Demand / allowable; Biaxial kern utilization; Full-contact trial minimum (kPa); Full-contact trial maximum (kPa).
 
-**Application conditions:** B,L,N,su,Nc >0; D,gamma >=0; FS >=1. Effective dimensions B-2|My|/N and L-2|Mx|/N must remain positive. Outside biaxial kern, full-contact pressures are not a compression-only solution.
+For partial contact, the worksheet also reports the compression-only area, peak pressure, pressure at the outline vertices and equilibrium residuals. The plan distinguishes the contact outline from the effective area.
 
-**References:** [gec6](BIBLIOGRAPHY.md#gec6).
+The action table reports the reduced base forces and moments by source row. With the action table and both interface inputs, the worksheet compares inclined bearing and sliding using the same base resultant. With both interface inputs blank, horizontal force or torsion suppresses the vertical bearing utilization. The worksheet adds no automatic loads or partial factors.
+
+For a horizontal base on homogeneous soil in undrained conditions, let H be the magnitude of the horizontal resultant, Aeff the effective area, Ac the calculated compression area, and a the adopted interface adhesion between zero and su. The sliding factor Fsl must be at least 1.
+
+```math
+\begin{gathered}
+A_{eff}=B'L',\qquad i_c=\frac{1+\sqrt{1-H/(s_uA_{eff})}}{2}\\
+q_{a,incl}=\gamma D+\frac{N_c s_u i_c}{F_s},\qquad
+R_{sl}=\frac{a\min(A_{eff},A_c)}{F_{sl}}
+\end{gathered}
+```
+
+The inclination factor follows DB SE-C Annex F, equation F.6, using effective dimensions. It is applied for all H within the equation's domain, including small horizontal loads. The sliding worksheet conservatively limits the adhesion area to the smaller of the two areas and takes no credit for passive resistance. It reports the signed reserve Rsl − H, including when the adopted resistance is zero. Torsion suppresses both comparisons. If H exceeds su × Aeff, the inclination equation is outside its domain and only the sliding comparison is reported. Select the actions and factors on a consistent design basis.
+
+**Application conditions:** B,L,N,su,Nc >0; D,gamma >=0; FS >=1. Effective dimensions B-2|My|/N and L-2|Mx|/N must remain positive. The contact model assumes a rigid base and a linear response in compression. Contact loss must be reviewed for the load combination.
+
+**References:** [gec6](BIBLIOGRAPHY.md#gec6), [biaxial contact](BIBLIOGRAPHY.md#biaxial_contact), [DB SE-C Cimientos, §4.3.1.1 and Annex F](https://www.codigotecnico.org/pdf/Documentos/SE/DBSE-C.pdf).
 
 
 <a id="bearing_drained"></a>
@@ -64,12 +94,18 @@ Results include Effective width (m); Effective length (m); Effective area (m2); 
 
 ```math
 \begin{gathered}
-q_u=c'N_c s_c+q'N_q s_q+\frac12\gamma' B N_\gamma s_\gamma\\
+q_u=c'N_c s_c+q'N_q s_q+\frac12\gamma' B_{\mathrm{eff}} N_\gamma s_\gamma\\
 N_q=e^{\pi\tan\phi'}\tan^2\left(45^\circ+\frac{\phi'}2\right),\quad N_c=\frac{N_q-1}{\tan\phi'},\quad N_\gamma=2(N_q+1)\tan\phi'
 \end{gathered}
 ```
 
-c′ and φ′ are effective strength parameters; q′ is effective overburden at the base and γ′ the adopted effective unit weight below it. For B≤L and L/B<5, sc=1+(B/L)Nq/Nc, sq=1+(B/L)tanφ′ and sγ=1−0.4B/L. At φ′=0 use Nc=π+2, Nq=1, Nγ=0, sc=1+B/(5L), sq=sγ=1. Strip factors equal one for L/B≥5. The worksheet distinguishes qu/Fs from q′+(qu−q′)/Fs; select the convention appropriate to the project. The supplied vertical load is a centred gross effective resultant.
+c′ and φ′ are effective strength parameters; q′ is effective overburden at the base and γ′ the adopted effective unit weight below it. For original B≤L and L/B<5, sc=1+(B/L)Nq/Nc, sq=1+(B/L)tanφ′ and sγ=1−0.4B/L. At φ′=0 use Nc=π+2, Nq=1, Nγ=0, sc=1+B/(5L), sq=sγ=1. Strip factors equal one for L/B≥5. Original dimensions determine shape factors, following FHWA section 5.2.4.
+
+Base moments give eB=|M_B/V| and eL=|M_L/V|, B′=B−2eB, L′=L−2eL and A′=B′L′ (FHWA equations 6-6/6-7). The weight term uses the smaller of B′ and L′; applied bearing pressure is V/A′. This effective area is not the actual compression-only contact area. Blank moments mean zero. Include horizontal-load lever arms in the supplied base moments.
+
+Choose **Supplied effective stresses** to enter q′ and γ′ directly, or **FHWA water factors (Table 5-3)** to supply uniform soil unit weight, base depth Df and water depth Dw below ground. Blank Dw means dry. The latter interpolates CWq from 0.5 at ground to 1 at the base, and CWγ from 0.5 at/below the base to 1 at Df+1.5Beff. Then q′=γDfCWq and γ′=γCWγ. These are the table's simplified half-weight approximations, not an exact hydrostatic integration with measured saturated weights. The two approaches are alternatives; water corrections are applied once.
+
+The worksheet distinguishes qu/Fs from q′+(qu−q′)/Fs; select the convention appropriate to the project. For horizontal resultant H>0, enter interface friction δ and the required sliding safety factor. Frictional sliding uses FR=Vtanδ and FSsliding=FR/H (FHWA equations 5-38/5-40), without adhesion or passive resistance. V must be the justified simultaneous effective stabilizing load after uplift. Separate bearing and sliding follow section 5.2.3.7; no additional load-inclination factor is multiplied into the shape-corrected bearing resistance. Unusual loading configurations require separate assessment.
 
 ### Inputs and units
 
@@ -82,13 +118,24 @@ c′ and φ′ are effective strength parameters; q′ is effective overburden a
 | Effective surcharge at base q (kPa) |
 | Effective unit weight below base (kN/m3) |
 | Comparison safety factor (>=1) |
-| Centred gross effective vertical load (kN) |
+| Gross effective vertical resultant V (kN) |
+| Base moment causing eccentricity across B (kN m; blank = 0) |
+| Base moment causing eccentricity across L (kN m; blank = 0) |
+| Water treatment |
+| Base depth Df below ground (m; water-factor method) |
+| Uniform soil unit weight (kN/m3; water-factor method) |
+| Water depth Dw below ground (m; blank = dry) |
+| Horizontal resultant H at base (kN; blank = 0) |
+| Drained base friction angle delta (deg; sliding) |
+| Required sliding safety factor (>=1) |
 
 ### Outputs and application
 
 Results include Nc; Nq; Ngamma; sc; sq; sgamma; Cohesion contribution (kPa); Surcharge contribution (kPa); Weight contribution (kPa); Gross ultimate pressure (kPa); Net ultimate pressure (kPa); Net allowable pressure (kPa); Gross-basis allowable pressure (kPa); Net-basis allowable gross pressure (kPa); Applied gross effective pressure (kPa).
 
-**Application conditions:** 0 <= phi <= 45 deg; 0 < B <= L; c,q >=0; gamma_eff,V >0; FS >=1. L/B >=5 uses strip factors. Homogeneous general shear, centred vertical load, level ground/base; no depth-resistance credit.
+The Geometry tab and PDF show the footing plan, load-resultant location, effective bearing area and selected water scenario. Results also include effective dimensions, the water factors when selected, and frictional sliding when H>0.
+
+**Application conditions:** 0 <= phi <= 45 deg; 0 < B <= L; c,q >=0; gamma,V >0; FS >=1. The resultant must lie inside the footing in both directions. H>0 requires phi>0 and 0<=δ<=phi. Homogeneous general shear, level ground/base; no depth-resistance credit, settlement, slope, compressibility, torsion or layered-ground verification. Outside the full-contact kern, review contact and rotation independently.
 
 **References:** [gec6](BIBLIOGRAPHY.md#gec6).
 
@@ -275,9 +322,11 @@ Mj is the positive constrained modulus of a layer in kPa, not Young modulus E. R
 
 Results include Selected profile settlement (mm); Maximum sampled settlement (mm); Minimum sampled settlement / rebound (mm); Integration sublayers; Fixed bottom depth (m).
 
+Save settlement as a separate service load case and include the combination identifier in its name. Enter the pressure change relative to the chosen initial condition over the loaded footprint. For a centred 360 kN service load on a 2 m by 2 m square with 20 kPa of excavation relief over the same area, the uniform pressure increment is 70 kPa. Use the actual loading geometry and increments for each case. Review the settlement and differential movement against the project criteria.
+
 **Application conditions:** Flexible rectangular loads, 1-10; contiguous layers from z=0, 1-40; M>0, step>0; <=400 vertical sublayers. Odd map grid 3-21, <=2 million stress evaluations. Fixed bottom and linear vertical strain; no rigid-contact, plasticity or automatic excavation/water stages.
 
-**References:** [settlement](BIBLIOGRAPHY.md#settlement), [elastic_columns](BIBLIOGRAPHY.md#elastic_columns).
+**References:** [settlement](BIBLIOGRAPHY.md#settlement), [elastic_columns](BIBLIOGRAPHY.md#elastic_columns), [preliminary sand stiffness](BIBLIOGRAPHY.md#sand_stiffness).
 
 
 <a id="schmertmann"></a>
@@ -317,4 +366,4 @@ Results include Gross pressure (kPa); Net pressure (kPa); Embedment factor C1; T
 
 **Application conditions:** Square footing B >0; net pressure >0; initial effective stress >=0. Time 0 or >=0.1 years. Contiguous layers cover 0..2B below base; Es >0 OR N >0 with justified Es/N >0. No automatic Es/N correlation.
 
-**References:** [schmertmann](BIBLIOGRAPHY.md#schmertmann).
+**References:** [schmertmann](BIBLIOGRAPHY.md#schmertmann), [preliminary sand stiffness](BIBLIOGRAPHY.md#sand_stiffness).

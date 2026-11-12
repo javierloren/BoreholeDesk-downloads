@@ -83,6 +83,19 @@ because a file has been imported.
 
 ## Samples and campaign data checks
 
+**File > Import campaign tables…** reads CSV, TSV and XLSX into four supported
+tables: Locations, Geology, FieldRecords and CoreRuns. Review the source preview,
+map columns and select depth/elevation units, decimal convention and source CRS.
+The complete batch is checked before applying it. Updates to existing populated
+values are opt-in; omitted populated source columns and sheets need acknowledgment.
+Invalid intervals or conflicting identities prevent the batch from being applied.
+
+**Save blank campaign template…** and **Export campaign workbook…** use the same
+four-sheet XLSX structure. Export assigns stable record identities and identities
+for actual samples; save the project afterward to retain them. Preserve identity
+columns for repeat imports. The workbook exchanges tabular observations; it does
+not replace the project backup or transfer source attachments and approval states.
+
 **Tools > Sample register** provides a project-level view of sample records.
 **Tools > Campaign quality** brings together checks for inconsistent depths,
 identifiers and project data requiring review. Resolve flagged records against
