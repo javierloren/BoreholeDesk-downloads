@@ -57,6 +57,18 @@ SHA-256 detects changed files; it does not establish publisher identity or certi
 engineering results. Obtain the installer from the official release page and keep
 it with its matching component assets when preparing for offline installation.
 
+### Workspace navigation
+
+Use **Find task...** above the Tasks panel to filter by task name or group.
+Searching leaves the current editor and its drafts open. Clear the search to
+show every task; choosing a hidden destination through a menu reveals it.
+**View > Restore side panels** returns the Project explorer and Tasks panels
+to their usual positions without changing project data or editor drafts.
+
+Calculation tabs use short labels such as **Input guide**, **Schedule** and
+**References**. Hover over a shortened label for its full title. Input tables,
+method references and calculation results keep their existing roles.
+
 ## 2. Create, edit and save a project
 
 1. Create a project or open the synthetic example. Save it under a name of your own.
@@ -216,7 +228,7 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 The [complete module reference](MODULES.md) documents all 36 calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
-For **RMR 1989 - tunnels and mines**, use **RMR rating guide** to inspect ranges
+For **RMR 1989 - tunnels and mines**, use **RMR guide** to inspect ranges
 and select observed categories. Enter measured strength, RQD and spacing in
 their stated units. **Export RMR card PNG...** saves a 300 dpi classification
 sheet with inputs, component ratings, rock class and the method reference.
