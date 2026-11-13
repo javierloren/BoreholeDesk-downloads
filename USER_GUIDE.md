@@ -225,7 +225,7 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
 ## 8. Calculation references
 
-The [complete module reference](MODULES.md) documents all 38 calculation worksheets,
+The [complete module reference](MODULES.md) documents all 40 calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
 For **RMR 1989 - tunnels and mines**, use **RMR guide** to inspect ranges
@@ -294,3 +294,22 @@ case with the project or export its calculation PDF. The result is an empirical
 rock-mass deformation estimate; it is not automatically assigned to an analysis.
 Distinguish it from intact Ei, dynamic stiffness, constrained modulus M and subgrade
 reaction k. See the [equations and reference](modules/ROCK.md#rock_modulus).
+
+
+## 11. Rock-mass and joint strength
+
+In **Calculations > Rock mass properties**, choose **Rock mass strength -
+generalized Hoek-Brown** for a reviewed brittle, effectively isotropic rock mass.
+Enter intact UCS (MPa), mi, GSI, D and the upper effective confinement. Review
+the principal compression and Balmer shear envelopes. Equivalent c/phi are
+explicitly the 2002 range fit with its reported bounds; they are not automatically
+assigned to a slope case and do not provide a tensile constitutive law.
+
+Choose **Joint peak strength - Barton JRC-JCS** for matching unfilled joint walls.
+Enter JRC, JCS (MPa), residual friction (degrees) and normal stress/water pressure
+states (MPa). Leave both block lengths blank for adopted field-scale parameters,
+or supply both to apply the empirical block-size correction once. Nonpositive
+effective normal stress receives no frictional contact resistance. Inspect peak
+and residual-friction results separately. Save the case and export its calculation
+PDF with the source schedule and references. These are strength worksheets, not
+automatic block, wedge or global slope-stability calculations.

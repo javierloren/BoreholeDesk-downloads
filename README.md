@@ -25,6 +25,7 @@ components automatically. Once prepared, local readers work offline.
   rock mass classification, stereonets, rock kinematics and slope stability.
 - Measured geophysical logs, depth comparisons with SPT/CPT/UCS and site-specific fits.
 - Rock-mass deformation modulus using Hoek-Diederichs (2006), with parameter references and sensitivity curves.
+- Hoek-Brown rock-mass compression strength and Barton JRC-JCS joint peak resistance with method references.
 - PDF reports, vector section exports and calculation references.
 
 This is an initial preview. Review readings, interpretations and engineering

@@ -1,6 +1,6 @@
 # BoreholeDesk module reference
 
-BoreholeDesk combines field records, borehole interpretation and explicit engineering methods in a local desktop project. This reference covers the **38 calculation worksheets**, slope stability methods and data-to-report workflows available in the desktop.
+BoreholeDesk combines field records, borehole interpretation and explicit engineering methods in a local desktop project. This reference covers the **40 calculation worksheets**, slope stability methods and data-to-report workflows available in the desktop.
 
 [User guide](USER_GUIDE.md) · [Bibliography](modules/BIBLIOGRAPHY.md)
 
@@ -54,6 +54,8 @@ Choose the exact method and edition for the question being assessed. Check the i
 | RMR14 - reviewed ratings and factors (Celada et al. 2014) | [RMR14 with reviewed input ratings and correction factors](modules/ROCK.md#rmr14) |
 | SMR - Romana discrete planar / toppling | [Discrete Slope Mass Rating](modules/ROCK.md#smr) |
 | GSI - Hoek, Carter and Diederichs 2013 | [Quantified GSI using RQD and joint condition](modules/ROCK.md#gsi_quantified) |
+| Rock mass strength - generalized Hoek-Brown | [Compression strength and range-specific equivalent parameters](modules/ROCK.md#hoek_brown) |
+| Joint peak strength - Barton JRC-JCS | [Peak joint resistance and optional block-size correction](modules/ROCK.md#barton_joint) |
 | Rock mass modulus - Hoek-Diederichs 2006 | [Isotropic rock-mass deformation modulus](modules/ROCK.md#rock_modulus) |
 | Q index - NGI handbook 2025 (supplied factors) | [Q index and equivalent dimension](modules/ROCK.md#q_system) |
 ### Field tests and pavement calculations

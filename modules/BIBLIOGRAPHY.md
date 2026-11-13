@@ -253,6 +253,7 @@ The original empirical kernel uses inches, psi and pci; SI conversions are expli
 Bishop (1955), Spencer (1967), Fellenius (1936), Janbu (1973), and Morgenstern
 and Price (1965): the named limit-equilibrium methods. U.S. Army Corps of Engineers
 (2003), *Slope Stability*, EM 1110-2-1902, discusses equilibrium and applicability.
+Zhu, D. Y., Lee, C. F., Qian, Q. H. and Chen, G. R. (2005), *A concise algorithm for computing the factor of safety using the Morgenstern-Price method*, Canadian Geotechnical Journal 42, 272-278, equations 1 and 7 (force and moment equilibrium). [Publication](https://doi.org/10.1139/t04-072).
 The distributed numerical engine is XSLOPE 1.0.5; the BoreholeDesk adapter exposes
 the variants stated in the slope chapter.
 [XSLOPE method descriptions](https://xslope.org/en/latest/lem/overview/).
@@ -291,3 +292,28 @@ Hoek, E. and Diederichs, M. S. (2006), *Empirical estimation of rock mass modulu
 International Journal of Rock Mechanics and Mining Sciences, 43(2), 203-215.
 Equations 2 (simplified) and 4 (with intact modulus); effectively isotropic rock
 masses. [Original publication](https://doi.org/10.1016/j.ijrmms.2005.06.005).
+
+
+<a id="hoek_brown"></a>
+## Generalized Hoek-Brown strength
+
+Hoek, E., Carranza-Torres, C. and Corkum, B. (2002), *Hoek-Brown failure criterion -
+2002 edition*, NARMS-TAC, 1, 267-273, equations 2-10 and 12-13.
+[Original paper](https://www.rocscience.com/assets/resources/learning/hoek/2002-Hoek-Brown-Failure-Criterion.pdf).
+
+Hoek, E. and Brown, E. T. (2019), *The Hoek-Brown failure criterion and GSI -
+2018 edition*, JRMGE 11(3), 445-463, especially geological scale, confinement and
+limits of applicability. [Publication](https://doi.org/10.1016/j.jrmge.2018.08.001).
+
+<a id="barton_joint"></a>
+## Joint peak shear strength and scale
+
+Barton, N. and Choubey, V. (1977), *The shear strength of rock joints in theory
+and practice*, Rock Mechanics 10, 1-54.
+[Publication](https://doi.org/10.1007/BF01261801).
+
+Barton, N. (2013), *Shear strength criteria for rock, rock joints, rockfill and
+rock masses: Problems and some solutions*, JRMGE 5(4), 249-261.
+[Publication](https://doi.org/10.1016/j.jrmge.2013.05.008).
+Peak joint strength, residual friction and empirical JRC/JCS scaling; no assumed
+cohesion for matching unfilled joints.

@@ -91,6 +91,13 @@ X and E are the interslice shear and normal components, ξ normalized horizontal
 position between the surface endpoints, and λ a solved scale parameter. The function is part of the
 method definition and must match when comparing implementations.
 
+A converged answer must close both force and moment equilibrium. The fast
+XSLOPE root path is accepted only when both balances close; a bracketed
+reference path is tried otherwise. If neither closes, the method reports failure
+rather than a factor of safety. Zhu et al. (2005), equations 1 and 7, provide
+the equilibrium basis; this is not a literal implementation of their iteration
+sequence.
+
 ## Circular search
 
 Enter the centre-coordinate and radius bounds and their sampling counts.

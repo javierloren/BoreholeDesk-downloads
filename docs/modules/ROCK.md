@@ -361,3 +361,111 @@ constrained modulus M or subgrade reaction k. It is not applied automatically to
 another calculation.
 
 **References:** [Hoek and Diederichs (2006)](BIBLIOGRAPHY.md#rock_modulus).
+
+
+<a id="hoek_brown"></a>
+
+## Rock mass strength - generalized Hoek-Brown
+
+**Worksheet:** Rock mass strength - generalized Hoek-Brown.
+
+### Formulation
+
+Generalized Hoek-Brown constants and compression strength follow the 2002
+formulation retained in the 2018 edition published by Hoek and Brown (2019):
+
+```math
+m_b=m_i\exp\!\left(\frac{GSI-100}{28-14D}\right),\quad s=\exp\!\left(\frac{GSI-100}{9-3D}\right),\quad a=\frac12+\frac{e^{-GSI/15}-e^{-20/3}}6
+```
+
+```math
+\sigma'_1=\sigma'_3+\sigma_{ci}\left(m_b\frac{\sigma'_3}{\sigma_{ci}}+s\right)^a,\qquad \sigma_c=\sigma_{ci}s^a
+```
+
+Compression is positive; stresses use MPa. The plotted principal branch is
+0 to the adopted maximum effective confinement. Balmer's transformation uses
+q=d sigma1/d sigma3 to obtain the shear-envelope coordinates:
+
+```math
+q=1+a m_b\left(m_b\sigma'_3/\sigma_{ci}+s\right)^{a-1},\quad \sigma'_n=\sigma'_3+\frac{\sigma'_1-\sigma'_3}{1+q},\quad \tau=\frac{(\sigma'_1-\sigma'_3)\sqrt q}{1+q}
+```
+
+Equivalent Mohr-Coulomb parameters use equations 12-13 of Hoek et al. (2002).
+Let x=sigma3max/sigma_ci, t=s+mb*x, B=(1+a)(2+a) and K=a*mb*t^(a-1):
+
+```math
+\phi'=\arcsin\!\left(\frac{6K}{2B+6K}\right),\qquad c'=\frac{\sigma_{ci}[(1+2a)s+(1-a)m_bx]t^{a-1}}{B\sqrt{1+6K/B}}
+```
+
+This is the **2002 range fit**, with formal lower cutoff -sigma_ci*s/mb and
+upper sigma3max. It is not an instantaneous tangent, universal c/phi or a tensile
+constitutive model. The two figures distinguish the compression and shear
+coordinates. The lower cutoff is reported as the fit definition only.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Intact UCS sigma_ci (MPa) |
+| Intact constant mi |
+| Reviewed GSI (0..100) |
+| Disturbance D (0..1) |
+| Maximum effective confinement sigma3 (MPa) |
+| Brittle isotropic rock mass applicability |
+
+### Outputs and application
+
+Positive sigma_ci, mi and maximum confinement; GSI 0..100 and D 0..1. Confirm representative brittle, effectively isotropic rock-mass behaviour at the assessment scale and a justified confinement range. Individual blocks/wedges, intact spalling and ductile/high-confinement behaviour need other models. No automatic transfer of equivalent parameters to slope cases.
+
+**References:** [hoek_brown](BIBLIOGRAPHY.md#hoek_brown).
+
+
+<a id="barton_joint"></a>
+
+## Joint peak strength - Barton JRC-JCS
+
+**Worksheet:** Joint peak strength - Barton JRC-JCS.
+
+### Formulation
+
+For adopted field-scale JRC, joint-wall strength JCS and residual friction phi_r,
+the Barton-Choubey peak envelope is:
+
+```math
+\sigma'_{n}=\sigma_n-u,\qquad \tau_p=\sigma'_n\tan\!\left[\phi_r+JRC\log_{10}\!\left(\frac{JCS}{\sigma'_n}\right)\right]
+```
+
+Angles use degrees and all stresses use MPa. No added cohesion is used. For
+nonpositive effective normal stress the worksheet credits zero frictional
+resistance. Residual friction resistance is sigma_n_eff*tan(phi_r), without
+roughness. No tensile strength or joint opening displacement is calculated.
+
+Optional paired block lengths apply the empirical scale laws discussed by
+Barton (2013). Both exponents use the **original** reference-scale JRC0:
+
+```math
+JRC_n=JRC_0(L_n/L_0)^{-0.02JRC_0},\qquad JCS_n=JCS_0(L_n/L_0)^{-0.03JRC_0}
+```
+
+Leave both lengths blank for already adopted field-scale parameters. Supply both
+positive lengths with Ln at least L0 to apply scaling once. L refers to the
+assessed block scale, not automatically the total joint trace.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Joint roughness JRC (0..20) |
+| Joint wall strength JCS (MPa) |
+| Residual friction phi_r (deg) |
+| Reference block length L0 (m; optional) |
+| Assessment block length Ln (m; optional) |
+| Unfilled contacting joint applicability |
+
+**Stresses table:** Total normal stress (MPa); Water pressure (MPa; blank = 0); Stress / parameter source.
+
+### Outputs and application
+
+JRC 0..20; JCS positive; residual friction 0..less than 90 degrees. Confirm matching unfilled joint walls and appropriate field scale. Implementation excludes effective compression above adopted JCS and apparent peak angles of 90 degrees or more; it does not silently clip either. High apparent angles require review of low-stress extrapolation. Stress rows retain source order, while plotted copies are sorted; lines only connect supplied states. No filled-joint, deformation or slope safety-factor model.
+
+**References:** [barton_joint](BIBLIOGRAPHY.md#barton_joint).
