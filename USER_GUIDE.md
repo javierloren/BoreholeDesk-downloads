@@ -225,7 +225,7 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
 ## 8. Calculation references
 
-The [complete module reference](MODULES.md) documents all 37 calculation worksheets,
+The [complete module reference](MODULES.md) documents all 38 calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
 For **RMR 1989 - tunnels and mines**, use **RMR guide** to inspect ranges
@@ -279,3 +279,18 @@ in the project; for logs longer than 40 rows the PDF input schedule shows the fi
 and last 20, while the plot uses all readings. This worksheet does not automatically
 insert a curve into a borehole's stratigraphic column.
 See the [method and bibliography](modules/FIELD_TESTS.md#geophysical).
+
+
+## 10. Rock-mass deformation modulus
+
+In **Calculations > Rock mass properties**, select **Rock mass modulus -
+Hoek-Diederichs 2006**. Enter reviewed GSI and disturbance D and confirm that
+an effectively isotropic rock-mass model is applicable. Enter reliable intact Ei
+in MPa for equation 4, or leave Ei blank explicitly to use simplified equation 2.
+The input reference panel identifies the equation and parameter basis.
+
+Calculate and review Erm in MPa, GPa and kPa and the sensitivity curves. Save the
+case with the project or export its calculation PDF. The result is an empirical
+rock-mass deformation estimate; it is not automatically assigned to an analysis.
+Distinguish it from intact Ei, dynamic stiffness, constrained modulus M and subgrade
+reaction k. See the [equations and reference](modules/ROCK.md#rock_modulus).

@@ -317,3 +317,47 @@ Results include Q; Observed RQD (%); RQD used in Q (%); RQD/Jn; Jr/Ja; Jw/SRF; E
 **Application conditions:** RQD 0..100% (adopted minimum 10 for Q only); positive Jn,Jr,Ja,Jw,SRF,span,ESR; Jw<=1. Factors selected from applicable NGI 2025 guidance; no automatic support design.
 
 **References:** [q](BIBLIOGRAPHY.md#q).
+
+
+<a id="rock_modulus"></a>
+
+## Isotropic rock-mass deformation modulus
+
+**Worksheet:** Rock mass modulus - Hoek-Diederichs 2006.
+
+### Formulation
+
+With no reliable intact modulus supplied, the worksheet uses Hoek and Diederichs
+(2006), equation 2, with Erm in MPa:
+
+```math
+E_{rm}=100000\frac{1-D/2}{1+\exp[(75+25D-GSI)/11]}
+```
+
+Supplying intact Ei in MPa selects equation 4 instead:
+
+```math
+E_{rm}=E_i\left[0.02+\frac{1-D/2}{1+\exp[(60+15D-GSI)/11]}\right]
+```
+
+### Inputs and units
+
+| Input |
+| --- |
+| Reviewed GSI (0..100) |
+| Disturbance factor D (0..1) |
+| Intact modulus Ei (MPa; blank = simplified Eq. 2) |
+| Isotropic rock mass applicability |
+
+### Outputs and application
+
+The worksheet reports Erm in MPa, GPa and kPa and shows sensitivity to D.
+Curves are not confidence intervals. GSI must describe the assessed rock mass;
+D represents adopted excavation damage/stress relaxation. Ei is an intact-rock
+modulus, not the macroscopic rock-mass modulus. The correlations assume effective
+isotropy; directional schistose behaviour needs another model. Review applicability
+at the excavation scale. Erm is not a strength parameter, dynamic wave modulus,
+constrained modulus M or subgrade reaction k. It is not applied automatically to
+another calculation.
+
+**References:** [Hoek and Diederichs (2006)](BIBLIOGRAPHY.md#rock_modulus).

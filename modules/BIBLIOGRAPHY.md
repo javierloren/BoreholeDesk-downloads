@@ -282,3 +282,12 @@ NIST/SEMATECH, *e-Handbook of Statistical Methods*, sections 4.1.4.1 and 4.4.3.1
 linear least squares and residual assessment.
 [Least squares](https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm),
 [Model assessment](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm).
+
+
+<a id="rock_modulus"></a>
+## Rock-mass deformation modulus
+
+Hoek, E. and Diederichs, M. S. (2006), *Empirical estimation of rock mass modulus*,
+International Journal of Rock Mechanics and Mining Sciences, 43(2), 203-215.
+Equations 2 (simplified) and 4 (with intact modulus); effectively isotropic rock
+masses. [Original publication](https://doi.org/10.1016/j.ijrmms.2005.06.005).
