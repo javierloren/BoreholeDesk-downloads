@@ -265,3 +265,20 @@ Caltrans (2024), *Ground Anchors and Soil Nails*, ground-anchor guidance.
 [Caltrans guidance](https://dot.ca.gov/-/media/dot-media/programs/engineering/documents/geotechnical-services/202402-gm-groundanchorers-a11y.pdf).
 The application uses adopted working loads, allowable capacities and explicit
 free/bond geometry; those input decisions must be justified by the project.
+
+
+<a id="geophysical"></a>
+## Measured geophysics and least squares
+
+Keys, W. S. (1990), *Borehole Geophysics Applied to Ground-Water Investigations*,
+USGS Techniques of Water-Resources Investigations, book 2, chapter E2.
+[USGS publication](https://pubs.usgs.gov/publication/twri02E2).
+
+U.S. Environmental Protection Agency, *Borehole Self-Potential*: measurement,
+fluid chemistry, lithology and interpretation.
+[EPA guidance](https://www.epa.gov/environmental-geophysics/borehole-self-potential).
+
+NIST/SEMATECH, *e-Handbook of Statistical Methods*, sections 4.1.4.1 and 4.4.3.1,
+linear least squares and residual assessment.
+[Least squares](https://www.itl.nist.gov/div898/handbook/pmd/section1/pmd141.htm),
+[Model assessment](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm).

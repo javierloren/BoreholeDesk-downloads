@@ -225,7 +225,7 @@ and SHA-256 when reporting a problem. Prefer a minimal synthetic reproduction.
 
 ## 8. Calculation references
 
-The [complete module reference](MODULES.md) documents all 36 calculation worksheets,
+The [complete module reference](MODULES.md) documents all 37 calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
 For **RMR 1989 - tunnels and mines**, use **RMR guide** to inspect ranges
@@ -244,3 +244,38 @@ section 3.6.5.4, p. 3-44. [Manual](https://www.fhwa.dot.gov/engineering/geotech/
 The [Methods and data checks page](https://github.com/javierloren/BoreholeDesk-downloads/blob/main/QUALITY.md)
 provides the equations, variable definitions and supporting references. Specialist
 calculation panels and reports identify their selected methods and bibliography.
+
+
+## 9. Measured geophysical logs and field-test comparison
+
+In **Calculations > Geophysics**, choose **Geophysical depth log / field-test
+correlation**. Create one case for a named borehole/location, common measured-depth
+reference and material domain; record these and the measurement provenance in
+**Context**. Select the actual curve and unit: SP (mV), resistivity (ohm m), Vs/Vp
+(m/s), gamma (API or counts/s), or temperature (degrees C).
+
+Enter or paste **Readings**, or use **Import CSV / Excel...** for CSV, TSV or XLSX.
+Select the sheet, depth and value columns, depth unit (m or ft), decimal separator
+and any explicit NoData code. Values must already use the selected curve unit.
+Depths must be strictly increasing or decreasing. Blank values are NoData, not zero.
+Import replacement requires confirmation and preserves the source file.
+
+For comparison, select one reference test/unit and enter reviewed comparison depths
+and values in **Samples**: field N, N60, (N1)60, CPT qc (MPa), or UCS (MPa).
+**Load saved SPT...** can copy the corresponding numeric results of a saved SPT
+calculation; verify its borehole, depth datum and correction factors first. Original
+handwritten/refusal records are not converted automatically. No reference samples
+are required to view a measured log with **Compare measurements only**.
+
+Set the maximum interpolation bracket. The schedule identifies exact, interpolated
+and unmatched observations; explicit NoData and the log endpoints bound matching.
+The depth figure and cross-plot show the selected observations. Optional linear or
+power fits describe the supplied paired data within their observed reference range;
+they do not automatically supply design parameters to another module. Use a
+published, applicable engineering correlation separately when required.
+
+Save the case with the project and export its calculation PDF. All readings remain
+in the project; for logs longer than 40 rows the PDF input schedule shows the first
+and last 20, while the plot uses all readings. This worksheet does not automatically
+insert a curve into a borehole's stratigraphic column.
+See the [method and bibliography](modules/FIELD_TESTS.md#geophysical).

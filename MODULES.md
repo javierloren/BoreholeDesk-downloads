@@ -1,6 +1,6 @@
 # BoreholeDesk module reference
 
-BoreholeDesk combines field records, borehole interpretation and explicit engineering methods in a local desktop project. This reference covers the **36 calculation worksheets**, slope stability methods and data-to-report workflows available in the desktop.
+BoreholeDesk combines field records, borehole interpretation and explicit engineering methods in a local desktop project. This reference covers the **37 calculation worksheets**, slope stability methods and data-to-report workflows available in the desktop.
 
 [User guide](USER_GUIDE.md) · [Bibliography](modules/BIBLIOGRAPHY.md)
 
@@ -61,6 +61,7 @@ Choose the exact method and edition for the question being assessed. Check the i
 | --- | --- |
 | Subgrade reaction - calibrated lateral test | [Lateral profile-test calibration and linear Winkler response](modules/FIELD_TESTS.md#ballast_lateral) |
 | SPT - N60 and (N1)60 | [SPT energy/equipment correction and overburden normalization](modules/FIELD_TESTS.md#spt) |
+| Geophysical depth log / field-test correlation | [Measured curves and site-specific field-test comparisons](modules/FIELD_TESTS.md#geophysical) |
 | VES / SEV - Schlumberger sounding | [Schlumberger electrical sounding reduction](modules/FIELD_TESTS.md#ves) |
 | Rigid pavement - AASHTO 1993 | [AASHTO 1993 rigid pavement equation](modules/FIELD_TESTS.md#pavement_rigid) |
 ### Finite elements

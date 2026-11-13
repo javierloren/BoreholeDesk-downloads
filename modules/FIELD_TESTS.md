@@ -171,3 +171,86 @@ Results include Equation thickness (mm); Rounded UP thickness (mm); Equation thi
 **Application conditions:** 50 <= reliability <100%; 1.5 <= terminal serviceability < initial <=4.5. Traffic,moduli,reaction,coefficients >0; 0 < search minimum < maximum and increment >0. AASHTO empirical equation; local calibration remains necessary.
 
 **References:** [pavement](BIBLIOGRAPHY.md#pavement).
+
+
+<a id="geophysical"></a>
+
+## Measured curves and site-specific field-test comparisons
+
+**Worksheet:** Geophysical depth log / field-test correlation.
+
+### Formulation
+
+For a reviewed reference observation at depth z, an exact log reading is used when
+available. Otherwise interpolation uses the two adjacent finite measurements, only
+when their spacing does not exceed the supplied maximum bracket:
+
+```math
+y(z)=y_0+(y_1-y_0)\frac{z-z_0}{z_1-z_0},\qquad z_0\leq z\leq z_1
+```
+
+No extrapolation or interpolation across explicit NoData is performed. Decreasing
+logs are reversed only in the working copy. Original depth order, signed values and
+source identifiers are retained. The user selects comparison depths and a common
+material domain; the software does not infer interval midpoints or lithology.
+
+An optional site-specific fit uses reference-test value x and measured curve y.
+Linear least squares follows NIST/SEMATECH:
+
+```math
+b=\frac{\sum_i(x_i-\bar{x})(y_i-\bar{y})}{\sum_i(x_i-\bar{x})^2},\qquad a=\bar{y}-b\bar{x},\qquad \hat{y}=a+bx
+```
+
+Power fitting applies the same equations to log(x), log(y), then exponentiates the
+intercept to obtain a. All paired values must be positive for a power fit.
+
+```math
+\log\hat{y}=\log a+b\log x,\qquad \hat{y}=ax^b
+```
+
+The reported residuals, RMSE and R squared use the original measured-value scale.
+R squared is undefined for constant y. Repeated observations remain separate;
+correlated replicates should be reviewed before fitting.
+
+```math
+RMSE=\sqrt{\frac{1}{n}\sum_i(y_i-\hat{y}_i)^2},\qquad R^2=1-\frac{\sum_i(y_i-\hat{y}_i)^2}{\sum_i(y_i-\bar{y})^2}
+```
+
+### Inputs and units
+
+| Input |
+| --- |
+| Measured curve and unit |
+| Reference test / unit |
+| Maximum interpolation bracket (m) |
+| Site-specific fit |
+
+**Readings table:** Measured depth below common reference (m); Measured value (selected curve unit; blank = NoData); Measurement source.
+
+**Samples table:** Reference comparison depth (m); Observed reference value (selected test / unit); Reference source / sample ID.
+
+**Context table:** Borehole / common depth reference / provenance.
+
+### Outputs and application
+
+Outputs include matched/unmatched counts, a paired depth schedule, matching status
+(0 unmatched, 1 exact, 2 interpolated), a common-depth figure and cross-plot.
+Optional fits supply a, b, residuals, RMSE and R squared. The fitted curve is drawn
+only over the observed reference range.
+
+Use 2-10000 strictly monotonic log depths and up to 200 reviewed reference
+observations from the same borehole/location and depth datum. SP and temperature
+may be signed; resistivity and velocities must be positive; gamma nonnegative.
+Select field N, N60, (N1)60, CPT qc or UCS explicitly; qc and UCS use positive MPa.
+SPT corrections belong in the SPT worksheet. Refusal and partial penetration must
+not be treated as ordinary completed-penetration N values. Fits require at least
+three matched pairs and distinct reference values.
+
+These are descriptive site-specific comparisons, not universal property laws.
+Measurement conditions, lithology, sampling support and independent applicability
+must be assessed before engineering interpretation. In particular, SP depends on
+fluid chemistry and lithology; an anomaly alone does not establish permeability
+or an aquifer. Curve measurements are not automatically transferred to design
+modules or stratigraphic columns.
+
+**References:** [Measured geophysics and least squares](BIBLIOGRAPHY.md#geophysical).
