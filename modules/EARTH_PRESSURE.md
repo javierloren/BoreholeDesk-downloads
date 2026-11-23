@@ -12,6 +12,25 @@ Open **Computation > Calculation worksheet**, choose the named method, enter the
 - [At-rest pressure for a restrained wall in layered ground](#pressure_k0_layered)
 - [Basal bearing analogy and hydraulic plug uplift](#excavation)
 
+For the **layered active** and **layered at-rest** worksheets, water levels can
+be entered independently on both wall faces. Both depths are measured downward
+from the **retained-ground surface**, not from two different ground surfaces.
+Leave front water blank for a dry front face. The signed net pressure is:
+
+```math
+p_{net}(z)=p'_{soil}(z)+\gamma_w\max(0,z-z_{w,retained})
+-\gamma_w\max(0,z-z_{w,front}).
+```
+
+Front water is an opposing lateral action; it does not change retained-soil
+effective stress. The diagram is integrated at layer boundaries, both water
+levels and active tension cut-offs. The schedule identifies each face's water
+pressure and their difference. Negative pressure acts toward retained ground;
+force and base moment are algebraic resultants, so opposing actions must also
+be reviewed locally. A near-zero resultant can retain a nonzero couple.
+This hydrostatic superposition does not calculate seepage, uplift or front-soil
+passive resistance. See the [earth-pressure references](BIBLIOGRAPHY.md#earth).
+
 <a id="pressure"></a>
 
 ## Undrained cohesive earth pressure with a tension cut-off
@@ -182,13 +201,14 @@ j identifies the material at depth z. Effective vertical stress includes surchar
 | Uniform surcharge (kPa) |
 | Water depth (m; blank=dry) |
 | Water unit weight (kN/m3) |
+| Front water depth below retained ground (m; blank=dry) |
 
 **Layers table:** Top depth (m); Bottom depth (m); Moist unit weight (kN/m3); Saturated unit weight (kN/m3); Effective friction angle (deg); Effective cohesion (kPa).
 
 
 ### Outputs and application
 
-Results include Total active force (kN/m); Moment about base (kN m/m); Resultant height above base (m); c=0 sensitivity force (kN/m); Sum of tensile-zone thicknesses (m).
+Results include Total active force (kN/m); Moment about base (kN m/m); Resultant height above base (m); c=0 sensitivity force (kN/m); Sum of tensile-zone thicknesses (m). With front water entered, the force and pressure are signed net values; both face-water components are listed separately. A near-zero net force has no reported resultant height, while its base moment is retained.
 
 **Application conditions:** Vertical smooth wall, horizontal contiguous layers covering 0..H; 1..100 layers. H,gamma>0; gamma_sat>gamma_water>0; c,q>=0; 0<=phi<60. Hydrostatic water only. Local pressure approximation, not global wedge equilibrium. No passive, seismic, seepage, compaction or independent perched crack-water model.
 
@@ -218,7 +238,7 @@ Horizontal pressure can change there when the adopted K0 changes.
 ### Inputs and units
 
 Retained height (m), Uniform surcharge (kPa), Water depth (m; blank=dry), and
-Water unit weight (kN/m3).
+Water unit weight (kN/m3), and Front water depth below retained ground (m; blank=dry).
 
 **Layers table:** Top depth (m); Bottom depth (m); Moist unit weight (kN/m3);
 Saturated unit weight (kN/m3); Adopted at-rest coefficient K0.
@@ -227,10 +247,11 @@ Saturated unit weight (kN/m3); Adopted at-rest coefficient K0.
 
 The worksheet shows effective soil pressure, water pressure, total pressure,
 thrust per metre, moment about the base and the resultant height. Use for a
-vertical restrained wall with horizontal backfill, contiguous layers and one
-retained-side hydrostatic water level. Adopt K0 for each layer from the stress
-history or field evidence. Construction stages, front-side water and seepage
-require separate treatment.
+vertical restrained wall with horizontal backfill and contiguous layers. Adopt
+K0 for each layer from the stress history or field evidence. Independent front
+water uses the retained-ground depth datum and is subtracted as described above;
+the output then reports signed net force and pressure. Construction stages and
+seepage require separate treatment.
 
 **References:** [FHWA NHI-06-089, §§10.2.1, 10.3 and 10.4.2](https://www.fhwa.dot.gov/engineering/geotech/pubs/nhi06089.pdf).
 

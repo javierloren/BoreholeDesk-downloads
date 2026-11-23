@@ -12,6 +12,149 @@ Open **Computation > Calculation worksheet**, choose the named method, enter the
 - [Converse–Labarre group efficiency](#pile_group)
 - [Axial load–displacement response with supplied t-z and q-z laws](#pile_transfer)
 - [Sand-derived resistance limits coupled to axial load transfer](#pile_soil_transfer)
+- [Axial cyclic resistance envelope](#pile_cyclic)
+- [Rigid pile cap load distribution](#pile_cap)
+- [Negative skin friction](#pile_downdrag)
+- [Individual pile settlement](#pile_settlement_rom)
+- [Ultimate lateral soil resistance](#pile_lateral_ultimate)
+- [Nonlinear lateral pile response](#pile_lateral_py)
+
+<a id="pile_lateral_py"></a>
+
+## Nonlinear lateral pile response
+
+**Worksheet:** Pile lateral response - nonlinear hyperbolic p-y.
+
+An elastic Euler-Bernoulli pile is supported by nonlinear soil springs. The
+monotonic hyperbolic relation follows Stuedlein and Li (2018), section
+2.5.11, p. 47, equation 2.92, expressed symmetrically for either load direction:
+
+```math
+p(y)=\frac{p_{ult}y}{y_{50}+|y|},\qquad K_0=\frac{p_{ult}}{y_{50}},\qquad R_i=h_i p(y_i)
+```
+
+Here p is force per unit pile length (kN/m), y and y50 are in metres in the
+equation, and hi is the spring tributary length (m). Input y50 is in **mm** and
+is converted once. Supply pult and y50 justified for the actual pile geometry,
+soil, depth and loading condition. Do not multiply line resistance by pile width
+again. The parameters are constant within each layer; subdivide layers to
+represent depth variation. This hyperbola is not a universal sand/clay curve.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Embedded pile length (m) |
+| Pile material elastic modulus E (MPa) |
+| Bending inertia I (m4) |
+| Ground-level horizontal force H (kN; signed) |
+| Ground-level head moment M (kN m; signed) |
+| Head rotation condition |
+| Upper unsupported depth (m) |
+| Maximum spring tributary length (m) |
+| Project head displacement limit (mm) |
+
+**Layers table:** Top (m); Bottom (m); Ultimate line reaction pult (kN/m);
+Displacement at half pult, y50 (mm).
+
+Free rotation or restrained rotation may be selected at the head; translation
+remains free. Layers cover zero to toe; zero pult disables that layer's reaction.
+
+### Outputs and application
+
+Profiles show displacement, rotation, shear, bending moment and soil reaction.
+For a restrained head, the additional restraint moment is reported separately
+from the entered action. The toe is free. Positive head force and moment
+reinforce head displacement with free rotation. Depth is positive downwards;
+positive rotation follows the beam coordinate from toe to head. The schedule
+reports shear and bending on the headward element side of each spring node;
+shear jumps across the concentrated spring reaction.
+
+The model uses constant elastic EI, small displacements and a monotonic,
+symmetric p-y law. It does not model cyclic memory, plastic section resistance,
+P-delta effects or group interaction. Groundwater and other site effects must
+already be reflected in the justified soil curves. Check mesh sensitivity and
+structural resistance separately; the user displacement limit is a project
+criterion, not an automatic code verification. A failed equilibrium produces
+an error rather than a partial calculation report.
+
+**References:** [Hyperbolic lateral pile response](BIBLIOGRAPHY.md#pile_hyperbolic).
+
+<a id="pile_cyclic"></a>
+
+## Axial cyclic resistance envelope
+
+**Worksheet:** Pile cyclic axial loading - ROM 0.5-05.
+
+### Formulation
+
+The method follows ROM 0.5-05, section 3.6.3.5, Figure 3.6.6 (printed
+pp. 238-241). Compression is positive. Actions act at ground level and exclude
+the embedded pile weight, which is accounted for separately. Static resistance
+components are **unfactored**.
+
+```math
+Q_h=R_f+R_p-W',\qquad T_a=\tfrac12 R_f+W'
+```
+
+```math
+\alpha=R_p/R_f,\qquad \beta=W'/T_a,\qquad
+\eta=\max\{\tfrac12+\alpha-\beta(1+\alpha),\;1-\beta\}
+```
+
+```math
+Q=(Q_{max}+Q_{min})/2,\qquad \Delta Q=(Q_{max}-Q_{min})/2
+```
+
+The diagram is bounded by `Q + ΔQ ≤ Qh`, `ΔQ − Q ≤ Ta` and
+`ΔQ ≤ η Ta`. The safety factor is the radial load multiplier `F = OB / OA`
+of Figure 3.6.6. Intersecting that ray with the three boundaries gives:
+
+```math
+F=\min\left\{\frac{Q_h}{Q_{max}},\;
+\frac{T_a}{-Q_{min}},\;\frac{\eta T_a}{\Delta Q}\right\}
+```
+
+Include the compression term only when `Qmax > 0`, the uplift term only when
+`Qmin < 0`, and the cyclic term only when `ΔQ > 0`. Thus equal nonzero extremes
+recover a static check. A zero/zero case has no load multiplier and is rejected.
+`F ≥ Frequired` meets the adopted radial-factor criterion. The diagram also
+shows the envelope divided by the required factor and the entered load points.
+
+### Inputs and units
+
+| Input | Definition |
+| --- | --- |
+| Static compression shaft resistance Rf (kN; unfactored) | Positive static shaft resistance in compression, before safety factors |
+| Static toe resistance Rp (kN; unfactored) | Nonnegative static toe resistance, before safety factors |
+| Effective embedded pile weight W' (kN) | Nonnegative effective embedded weight, including buoyancy |
+| Required radial safety factor F | Project-adopted minimum, at least 1 |
+| Minimum axial head load (kN; compression positive) | Lower signed axial extreme |
+| Maximum axial head load (kN; compression positive) | Upper signed axial extreme on the same action basis, not below the minimum |
+
+### Worked example
+
+For `Rf = 1000 kN`, `Rp = 500 kN` and `W' = 100 kN`,
+`Qh = 1400 kN`, `Ta = 600 kN` and `η Ta = 500 kN`.
+Load extremes of `100 kN` and `500 kN` give `Q = 300 kN` and
+`ΔQ = 200 kN`. The compression multiplier is `2.8`; the cyclic multiplier
+is `2.5`. Uplift is inactive, so the radial factor is `2.5`.
+
+### Outputs and application
+
+Results include nominal head resistances, alpha, beta, eta, mean load,
+amplitude, component multipliers, radial factor and required/calculated factor.
+The uplift expression follows section 3.6.7.1; the compression head equilibrium
+follows section 3.6.4.1. All three constraints govern the plotted envelope.
+
+This is a stationary **axial** envelope for many cycles on an individual vertical
+pile. It does not calculate cycle-count accumulation, fatigue life, accumulated
+displacement, lateral p-y hysteresis, liquefaction, group effects or structural
+resistance. No few-cycle relief or loading-rate strength increase is assumed.
+For photovoltaic work, establish applicability, action combinations and the
+required factor for the project. It is not an automatic Eurocode verification.
+
+**References:** [ROM 0.5-05](BIBLIOGRAPHY.md#pile_cyclic).
 
 <a id="pile"></a>
 
@@ -163,6 +306,15 @@ Q_a(D,L)=\frac{Q_s(D,L)}{F_{s,s}}+\frac{Q_b(D,L)}{F_{s,b}}
 
 Each D/L row is recalculated with its own geometry and bounded K/Nq chart factors on the common ground profile. Shaft and toe resistance, compression and optional uplift are tabulated for comparison. Alternative safety factors are explicit comparison choices. Every alternative must satisfy the factor-domain and profile-coverage conditions. The table supports engineering selection; it is not an automatic structural or cost optimization.
 
+Optional nonnegative head compression and uplift demands add margins equal to
+the calculated allowable head resistance minus the corresponding supplied demand
+(kN). Demand and resistance must use the same allowable-load basis. Uplift demand
+requires the pile unit weight, shaft resistance ratio and uplift safety factor.
+The summary identifies the shortest passing **entered** circular-pile candidate
+for all supplied axial demands; no intermediate length is calculated. Lateral,
+cyclic, downdrag, settlement and structural checks remain separate. This
+allowable-resistance comparison is not a Eurocode partial-factor verification.
+
 ### Inputs and units
 
 | Input |
@@ -178,6 +330,10 @@ Each D/L row is recalculated with its own geometry and bounded K/Nq chart factor
 | Uplift: shaft safety factor |
 | Alternate shaft FS (optional) |
 | Alternate toe FS (optional) |
+
+Optional demand inputs: **Allowable-basis head compression demand (kN; optional)** and
+**Allowable-basis head uplift demand (kN; optional)**. Leave either blank to omit that
+comparison.
 
 **Cases table:** Diameter (m); Length (m); K chart shaft angle (degrees); Toe angle (degrees).
 
@@ -340,3 +496,148 @@ Results include Head settlement (mm); Toe settlement (mm); Elastic pile shorteni
 **Application conditions:** Sand, user-selected beta and Nq >=0; 1..30 contiguous soil layers from ground/pile head to toe. Hydrostatic water, total gamma>0, effective stress>=0. At most 400 elements. Calibrated hyperbolic compression only; no group, downdrag, self-weight, lateral or structural checks.
 
 **References:** [gec10](BIBLIOGRAPHY.md#gec10).
+
+
+<a id="pile_cap"></a>
+
+## Rigid pile cap - vertical spring load distribution
+
+**Worksheet:** Rigid pile cap - vertical spring load distribution.
+
+### Formulation
+
+```math
+N_i=k_i(w+a(x_i-x_c)+b(y_i-y_c)),\quad \sum N_i=N,\quad \sum y_iN_i=-M_x,\quad \sum x_iN_i=M_y
+```
+
+Coordinates and adopted axial group spring stiffnesses -> rigid plane compatibility -> vertical and two moment equilibria -> pile forces, settlements and optional resistance utilization.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Cap vertical load N (kN; compression positive) |
+| Applied right-hand moment Mx (kN m) |
+| Applied right-hand moment My (kN m) |
+
+**Piles table:** Pile X (m); Pile Y (m); Adopted axial spring stiffness (kN/m); Compression resistance (kN; optional, same load basis); Uplift resistance (kN; optional, same load basis).
+
+### Outputs and application
+
+Positive compression is the upward pile reaction supporting the cap; X/Y/upward Z are right-handed. Applied moments are right-handed: a downward force at positive Y has negative Mx. Enter group-adjusted AXIAL stiffness in kN/m. Moment modes unsupported by a single or collinear pile layout are rejected. Bilateral springs allow uplift; tension resistance and the pile-cap connection require review. Optional capacities must use the same load/factor basis. No lateral shear, torsion, cap bending or inclined piles is solved.
+
+**Application conditions:** 1..200 distinct vertical piles; positive supplied axial stiffness (kN/m). Rigid cap with bilateral axial response. Applied moments must be equilibrated by the layout. Same action/resistance basis for optional checks; no lateral load, torsion, cap bending, inclined piles or automatic group interaction.
+
+**References:** Puertos del Estado, ROM 0.5-05 (2005), section 3.6.10.1, printed p. 273. Rigid-cap compatibility and three-component equilibrium for supplied, group-adjusted axial springs; vertical piles only. [ROM bibliography](BIBLIOGRAPHY.md#rom_piles).
+
+
+<a id="pile_downdrag"></a>
+
+## Pile negative skin friction - adopted or compatible neutral depth
+
+**Worksheet:** Pile negative skin friction - adopted or compatible neutral depth.
+
+### Formulation
+
+```math
+R^-=C\int_0^{z_n}\tau^-(z)\,dz,\qquad Q_{below}=Q_{head}+W\prime+R^-
+```
+
+Adopted neutral depth or reviewed settlement compatibility -> integrate mobilized negative shaft stress over actual contact perimeter -> drag load and total transferred load below the drag zone.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Embedded pile length (m) |
+| Soil-contact perimeter (m) |
+| Head compression load (kN) |
+| Effective embedded pile weight (kN) |
+| Adopted neutral depth (m; blank=use settlement curves) |
+
+**Layers table:** Top (m); Bottom (m); Mobilized negative shaft stress (kPa).
+
+**Settlements table:** Trial neutral depth (m); Free-field ground settlement at depth (mm); Pile settlement for this trial drag zone (mm).
+
+### Outputs and application
+
+C is actual contact perimeter. Supply an adopted neutral depth OR trial compatibility data. For each trial depth, pile settlement must come from a calculation including head load, weight, drag and the remaining supporting zone. It is not the movement-versus-depth profile of one load case. The code interpolates one monotonic crossing; coincident or ambiguous crossings are rejected. This does not generate a consolidation field or apply a pile-group drag limit. Check positive resistance below the drag zone and structural axial force separately.
+
+**Application conditions:** Positive length/perimeter; nonnegative drag stresses, head compression and weight. Layers contiguous from zero to toe. Adopted neutral depth 0..L OR increasing trial depths covering 0..L with a unique decreasing settlement-difference crossing. Group and consolidation calculations are separate.
+
+**References:** Puertos del Estado, ROM 0.5-05 (2005), section 3.6.3.4.1, pp. 232-234, Figure 3.6.3. Perimeter integration and neutral-depth compatibility of free-field and trial pile settlements. [ROM bibliography](BIBLIOGRAPHY.md#rom_piles).
+
+
+<a id="pile_settlement_rom"></a>
+
+## Pile settlement - ROM 0.5-05 simplified service model
+
+**Worksheet:** Pile settlement - ROM 0.5-05 simplified service model.
+
+### Formulation
+
+```math
+s=\left[\frac{D}{40Q_h}+\frac{l_1+\alpha l_2}{AE}\right]P,\qquad K_v=P/s
+```
+
+Nominal head resistance and pile geometry/material -> ROM soil flexibility plus elastic shortening -> service head settlement and equivalent secant axial spring stiffness.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Equivalent pile diameter D (m) |
+| Pile material area A (m2) |
+| Pile elastic modulus E (MPa) |
+| Free pile length l1 (m) |
+| Embedded pile length l2 (m) |
+| Load-transfer factor alpha (0.5..1) |
+| Nominal static head compression resistance Qh (kN) |
+| Service head compression P (kN) |
+| Project settlement limit (mm) |
+
+### Outputs and application
+
+Use metres, kN, material area in m2 and E in MPa (converted to kN/m2). Equivalent diameter and material area are separate for justified noncircular profiles. Alpha ranges from 0.5 (floating) to 1 (predominantly end bearing). Qh is nominal head failure resistance, not an allowable load. Kv is the finite flexibility inverse even at zero load. This is a simplified individual-pile service estimate. Group settlement, consolidation and nonlinear/cyclic movement are not calculated. ROM recommends load tests for critical deformation problems; the entered movement limit remains project-specific.
+
+**Application conditions:** Positive D, material area, E, L, nominal Qh and user limit; l1>=0; 0.5<=alpha<=1; 0<=P<Qh. Approximate individual vertical-pile service model; no group, cyclic or ultimate settlement prediction.
+
+**References:** Puertos del Estado, ROM 0.5-05 (2005), section 3.6.9.1.1, printed p. 269; section 3.6.9.1 for applicability. Simplified individual vertical-pile service settlement. [ROM bibliography](BIBLIOGRAPHY.md#rom_piles).
+
+
+<a id="pile_lateral_ultimate"></a>
+
+## Short rigid pile - ROM lateral soil failure
+
+**Worksheet:** Short rigid pile - ROM lateral soil failure.
+
+### Formulation
+
+```math
+\sigma(z)=9c+3\sigma\prime_v(z)\tan^2(45^\circ+\phi/2),\quad H_{rot}=R-C_R,\quad (e+z_{CR})C_R=(e+z_R)R
+```
+
+Total overburden and groundwater -> effective stresses -> ROM limiting pressure -> exact force/moment integration -> rotation pivot and ultimate horizontal GEO resistance.
+
+### Inputs and units
+
+| Input |
+| --- |
+| Soil-contact pile width D (m) |
+| Embedded pile length L (m) |
+| Horizontal load height e above ground (m) |
+| Unsupported upper depth (m; input required) |
+| Water depth (m; blank=dry) |
+| Water unit weight (kN/m3) |
+| Horizontal load magnitude H (kN) |
+| Required horizontal resistance factor |
+
+**Layers table:** Top (m); Bottom (m); Total unit weight (kN/m3); Adopted cohesion c in ROM pressure law (kPa); Adopted friction angle in ROM pressure law (deg).
+
+### Outputs and application
+
+The general ROM Figure 3.6.12 pressure law is integrated piecewise exactly. The rotation pivot is found from moment equilibrium, with reaction and counter-reaction on opposite sides. Groundwater is hydrostatic and total soil weights must be entered. Unsupported depth removes reaction while retaining the entered overburden; actual excavation needs a correctly redefined ground/stress datum. This model is not a reproduction of the separate pure-clay Broms chart. It assumes a short structurally rigid pile: section yielding may govern first. Opposite-sign head moments, flexible-pile p-y response, group interaction, cyclic degradation and displacements require other calculations.
+
+**Application conditions:** Short, structurally rigid vertical pile; D,L,H>0, e>=0, 0<=unsupported<L. Contiguous layers to toe, gamma,c>=0 and 0<=phi<60 degrees; hydrostatic water, nonnegative effective stress; required factor>=1. General ROM GEO model, not flexible-pile structural resistance or cyclic/lateral displacement.
+
+**References:** Puertos del Estado, ROM 0.5-05 (2005), section 3.6.8.1, pp. 265-267, Figure 3.6.12; section 3.6.8.3, p. 268. General rigid-pile pressure model, not the digitized Broms charts. [ROM bibliography](BIBLIOGRAPHY.md#rom_piles).

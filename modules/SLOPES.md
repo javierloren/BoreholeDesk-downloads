@@ -31,6 +31,35 @@ material and water pressure.
 
 ## Methods
 
+### Surface loads and horizontal pseudostatic action
+
+In **Loads / earthquake**, define vertical surcharge strips by start X, end X
+and q in kPa per horizontal area. The strips follow the ground surface; their
+overlapping portions add. Only the portion over the evaluated sliding mass is
+included. Each slice receives the integrated vertical force and its point of
+application:
+
+```math
+D_i=\sum_j q_j\Delta x_{ij},\qquad
+x_{D,i}=\frac{\sum_j q_j\Delta x_{ij}\bar{x}_{ij}}{D_i}.
+```
+
+Here Δxij is the horizontal overlap of strip j and slice i, and x̄ij is its
+midpoint. Ground breakpoints subdivide the force integration. An empty table
+means no surcharge; a zero-intensity strip contributes no force.
+
+The dimensionless horizontal coefficient kh = ah/g generates slice inertia
+kh Wi in the direction of sliding, acting at the soil slice's centre of gravity.
+kh = 0 selects static analysis. Adopt the coefficient from the project seismic
+basis and applicable code; it is not assigned by the program. Vertical seismic
+action and inertia of the applied surcharge are not included. Pseudostatic
+analysis does not predict permanent displacement or dynamic pore pressures.
+
+These forces and their moments enter the selected limit-equilibrium method;
+see [XSLOPE: distributed and seismic forces](https://xslope.org/en/latest/lem/overview/).
+The slice schedule and PDF retain the applied forces and load inputs. The
+ordinary and Bishop equations below show the **unloaded, static** special case.
+
 <a id="oms"></a>
 ### Ordinary / Fellenius
 

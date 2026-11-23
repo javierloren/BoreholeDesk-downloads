@@ -2,6 +2,46 @@
 
 [Module index](../MODULES.md) · [Bibliography](BIBLIOGRAPHY.md)
 
+<a id="seismic_moduli"></a>
+
+## Dynamic elastic moduli from Vp / Vs / density
+
+**Worksheet:** Dynamic elastic moduli from Vp / Vs / density.
+
+### Formulation
+
+```math
+G=\rho V_s^2,\qquad M=\rho V_p^2,\qquad K=M-\frac{4G}{3},\qquad
+\nu=\frac{V_p^2-2V_s^2}{2(V_p^2-V_s^2)},\qquad E=2G(1+\nu)
+```
+
+With density in kg/m3 and velocities in m/s, these equations give moduli in Pa.
+The worksheet divides by 10^6 to report MPa. G is shear modulus, K bulk modulus,
+M constrained/P-wave modulus and E Young's modulus, all dynamic at small strain.
+
+### Inputs and units
+
+Readings: Depth (m), P-wave velocity Vp (m/s), S-wave velocity Vs (m/s), Bulk mass density (kg/m3), Measurement / interpretation source.
+Depths strictly increase. Each row must pair measurements representative of the
+same location, material and conditions. Mass density is not unit weight;
+Rayleigh-wave phase velocity is not Vs. No depth interpolation or inferred
+pairing is performed.
+
+### Outputs and application
+
+The schedule and depth plot report dynamic G, E, K, M and Poisson ratio. Positive
+elastic stiffness requires Vp squared greater than 4/3 times Vs squared. A
+negative Poisson ratio within the elastic stability range is retained with an
+explicit review warning. Degenerate or nonpositive stiffness is rejected.
+
+These relations assume a homogeneous isotropic elastic medium. Dynamic
+small-strain moduli are not static foundation-design moduli, drained/undrained
+soil parameters, subgrade reaction or strength. The program performs no automatic
+dynamic-to-static conversion or transfer to another design worksheet.
+
+**References:** [US EPA, Acoustic Logging, equations 3-5; Seismic Velocities, equation 1](BIBLIOGRAPHY.md#seismic_moduli).
+
+
 Open **Computation > Calculation worksheet**, choose the named method, enter the parameters and tables, then calculate. Review the schedule and method conditions, save the case to the project and export its calculation report. The following equations describe the implemented variant; symbols are local to each method.
 
 - [Lateral profile-test calibration and linear Winkler response](#ballast_lateral)
@@ -26,6 +66,24 @@ f(\zeta)\in\left\{1,\zeta,\zeta^2,\frac{\ln(1+\zeta)}{\ln2}\right\}
 
 E and I are the profile modulus and bending inertia, b soil-contact width and hi spring tributary length. The selected constant, linear, quadratic or logarithmic distribution defines a dimensionless depth shape. The test force, load height, measurement height and measured displacement calibrate kref. The design profile is then recalculated for its own EI, dimensions and ground-level shear/moment. An unsupported depth suppresses springs in that zone. Ground-displacement M–Q boundaries are service response limits, not structural bending/shear capacities.
 
+The measured displacement at height h above ground includes the ground
+translation y0, rotation theta0 and flexure of the above-ground profile under
+the test force P applied at height H:
+
+```math
+y_h=y_0+h\theta_0+\delta_f(h),\qquad
+\delta_f(h)=\begin{cases}
+\dfrac{P h^2(3H-h)}{6EI},&0\le h\le H,\\
+\dfrac{P H^2(3h-H)}{6EI},&h>H.
+\end{cases}
+```
+
+The second branch requires the same member to extend to the gauge, with no
+additional loads above the actuator. These are small-deflection, constant-EI
+cantilever relations, obtained by integrating curvature M/EI. Enter heights
+from the original ground surface and match the measured point, not an assumed
+ground displacement. See the [beam references](BIBLIOGRAPHY.md#beam).
+
 ### Inputs and units
 
 | Input |
@@ -47,15 +105,40 @@ E and I are the profile modulus and bending inertia, b soil-contact width and hi
 | Design: elastic modulus E (MPa) |
 | Design: ground-level shear Q (kN) |
 | Design: ground-level moment M (kN m) |
-| Design: ground displacement limit (mm) |
+| Design: user-defined ground displacement limit (mm) |
 
 ### Outputs and application
 
 Results include Calibrated k at 1 m (MN/m3); Test spring stiffness at 1 m / mesh cell (kN/m); Design spring stiffness at 1 m / mesh cell (kN/m); Fitted measured displacement (mm); Calibration residual (mm); Calibration iterations; Test ground displacement (mm); Design ground displacement (mm); Design ground rotation (rad); Ground displacement utilization; Positive-limit M at applied Q (kN m); Positive-limit Q at applied M (kN); Ground compliance a (mm/kN); Ground compliance b (mm/(kN m)); M-Q slope (m); Positive-limit moment intercept (kN m); Positive-limit shear intercept (kN); Maximum absolute nodal bending (kN m); Force equilibrium residual (kN); Moment equilibrium residual (kN m).
 
-**Application conditions:** Positive lengths, widths, E, I, test force/displacement and design limit. 0 <= measurement height <= load height; excavation < both embedded lengths. Mesh 2..160 intervals. Linear elastic Winkler calibration; no universal transferable k range.
+**Application conditions:** Positive lengths, widths, E, I, test force/displacement and design limit. Load and measurement heights >=0; the member extends to the gauge. Excavation < both embedded lengths. Mesh 2..160 intervals. Linear elastic Winkler calibration; no universal transferable k range. This worksheet addresses lateral loading in a profile-test campaign; axial uplift, cyclic degradation, soil ultimate resistance and structural yielding need separate assessment.
 
 **References:** [beam](BIBLIOGRAPHY.md#beam).
+
+### User-adopted serviceability criterion
+
+The displacement limit is editable: enter 20, 25, 30 mm or another justified
+positive value. It remains separate from the displacement measured during the
+test. Changing the design limit updates utilization and both M-Q boundary lines;
+the calibrated k and the response under the entered design actions stay the same.
+The adopted value is included in the results, model diagram and calculation PDF.
+
+For a European design, select the applicable EN 1990, EN 1991, EN 1997 and
+structural-material parts, their adopted editions and National Annexes. For
+French photovoltaic pile foundations, review NF P94-262, NF P94-151 for lateral
+load tests and NF EN ISO 22477-2 for axial tension tests. Steel profiles also
+require the relevant EN 1993 checks, including cold-formed or pile provisions
+where applicable. Wind, snow, load combinations and structural resistance are
+distinct from fitting a lateral spring modulus. No value of 20, 25 or 30 mm is
+assigned here as a universal French photovoltaic or Eurocode requirement.
+
+See the [European and French design-code references](BIBLIOGRAPHY.md#european_french).
+
+For Italian projects, NTC sections 6.4.3.1, 6.4.3.2 and 6.4.3.7 address pile
+resistance, serviceability and load tests. The supported structure governs the
+adopted displacement criterion. A lateral calibration and displacement check do
+not establish axial uplift or structural resistance, or complete NTC compliance.
+See [Italian pile-foundation requirements](https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf/).
 
 
 <a id="spt"></a>
@@ -63,6 +146,25 @@ Results include Calibrated k at 1 m (MN/m3); Test spring stiffness at 1 m / mesh
 ## SPT energy/equipment correction and overburden normalization
 
 **Worksheet:** SPT - N60 and (N1)60.
+
+### Purpose and workflow
+
+Use this worksheet to prepare field SPT blow counts for comparison and for
+correlations that explicitly require N60 or (N1)60. N60 standardizes the energy
+and equipment basis; (N1)60 additionally normalizes effective overburden stress.
+These are different quantities and must not be substituted for one another.
+
+Start in **SPT measurements**, entering one row per test. Review the pressure
+reference, CN cap and water settings in **Correction settings**. Use **Ground
+profile (optional)** only to calculate effective stress from layers when direct
+effective stress is not supplied. Then calculate and review the corrected depth
+profile and per-sample schedule. The worksheet does not itself determine friction
+angle, bearing resistance, settlement or liquefaction resistance.
+
+For an illustrative test with field N=20, ER=75%, CB=CR=CS=1, effective stress
+200 kPa, reference pressure 100 kPa and CN cap 1.7, N60=25 and (N1)60 is
+approximately 17.68. The unit equipment factors are assumptions for this
+example, not recommended defaults. See the [method references](BIBLIOGRAPHY.md#spt).
 
 ### Formulation
 

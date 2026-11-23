@@ -1,12 +1,19 @@
 # BoreholeDesk module reference
 
-BoreholeDesk combines field records, borehole interpretation and explicit engineering methods in a local desktop project. This reference covers the **40 calculation worksheets**, slope stability methods and data-to-report workflows available in the desktop.
+BoreholeDesk combines field records, borehole interpretation and explicit engineering methods in a local desktop project. This reference covers the calculation worksheets, slope stability methods and data-to-report workflows available in the desktop.
 
 [User guide](USER_GUIDE.md) · [Bibliography](modules/BIBLIOGRAPHY.md)
 
 ## Calculation worksheets
 
 Choose the exact method and edition for the question being assessed. Check the input basis, units, groundwater, geometry and safety-factor convention before comparing alternatives. Each method card lists its actual input schedule, equations, outputs and application conditions.
+
+For Eurocode-based projects, adopt the applicable standard edition and National
+Annex before selecting action combinations, factors and serviceability criteria.
+Method cards identify the relevant design-code context; an empirical method,
+classification or geometric calculation retains its own scope. French
+photovoltaic foundation references distinguish lateral and axial tests. See
+[European and French references](modules/BIBLIOGRAPHY.md#european_french).
 
 ### Shallow foundations and settlement
 
@@ -17,6 +24,9 @@ Choose the exact method and edition for the question being assessed. Check the i
 | Footing contact - uniaxial compression only | [Uniaxial compression-only footing contact](modules/FOUNDATIONS.md#footing_contact) |
 | Foundation alternatives - supplied pressures and settlements | [Compare supplied pressures and observed or supplied settlements](modules/FOUNDATIONS.md#foundation_service) |
 | Stress and consolidation | [Stress increments and one-dimensional primary consolidation](modules/FOUNDATIONS.md#settlement) |
+| Primary consolidation - settlement versus time | [Time history and average consolidation target](modules/FOUNDATIONS.md#settlement_time) |
+| Secondary compression after primary reference | [Additional long-term compression](modules/FOUNDATIONS.md#secondary_compression) |
+| Differential settlement and support rotation | [Connected support movements and project rotation criterion](modules/FOUNDATIONS.md#settlement_differential) |
 | Settlement field - Boussinesq / 1D primary consolidation | [Plan and section views of primary consolidation](modules/FOUNDATIONS.md#settlement_field) |
 | Immediate settlement - elastic layered field | [Vertical elastic-strain integration through layers](modules/FOUNDATIONS.md#settlement_elastic) |
 | Schmertmann - square footing | [Square-footing settlement with the fixed influence diagram](modules/FOUNDATIONS.md#schmertmann) |
@@ -32,6 +42,13 @@ Choose the exact method and edition for the question being assessed. Check the i
 | Pile group - Converse-Labarre screening | [Converse–Labarre group efficiency](modules/PILES.md#pile_group) |
 | Pile axial load-transfer - supplied t-z / q-z laws | [Axial load–displacement response with supplied t-z and q-z laws](modules/PILES.md#pile_transfer) |
 | Sand axial response - beta / Nq and load transfer | [Sand-derived resistance limits coupled to axial load transfer](modules/PILES.md#pile_soil_transfer) |
+| Pile cyclic axial loading - ROM 0.5-05 | [Axial cyclic resistance envelope](modules/PILES.md#pile_cyclic) |
+| Rigid pile cap - vertical spring load distribution | [Rigid pile cap - vertical spring load distribution](modules/PILES.md#pile_cap) |
+| Pile negative skin friction - adopted or compatible neutral depth | [Pile negative skin friction - adopted or compatible neutral depth](modules/PILES.md#pile_downdrag) |
+| Pile settlement - ROM 0.5-05 simplified service model | [Pile settlement - ROM 0.5-05 simplified service model](modules/PILES.md#pile_settlement_rom) |
+| Short rigid pile - ROM lateral soil failure | [Short rigid pile - ROM lateral soil failure](modules/PILES.md#pile_lateral_ultimate) |
+| Pile lateral response - nonlinear hyperbolic p-y | [Nonlinear lateral pile response](modules/PILES.md#pile_lateral_py) |
+
 ### Earth pressure and excavation checks
 
 | Worksheet | Method reference |
@@ -66,6 +83,7 @@ Choose the exact method and edition for the question being assessed. Check the i
 | SPT - N60 and (N1)60 | [SPT energy/equipment correction and overburden normalization](modules/FIELD_TESTS.md#spt) |
 | Geophysical depth log / field-test correlation | [Measured curves and site-specific field-test comparisons](modules/FIELD_TESTS.md#geophysical) |
 | VES / SEV - Schlumberger sounding | [Schlumberger electrical sounding reduction](modules/FIELD_TESTS.md#ves) |
+| Dynamic elastic moduli from Vp / Vs / density | [Small-strain elastic wave relations](modules/FIELD_TESTS.md#seismic_moduli) |
 | Rigid pavement - AASHTO 1993 | [AASHTO 1993 rigid pavement equation](modules/FIELD_TESTS.md#pavement_rigid) |
 ### Finite elements
 

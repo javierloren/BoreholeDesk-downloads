@@ -23,6 +23,16 @@ records exact package versions and file hashes for the local engines.
 
 ## Local engines and models
 
+- **Optional direct-character handwriting reader:** PP-OCRv6 medium model,
+  `small-models-for-glam/kraken-ppocrv6-medium`, Apache-2.0; model SHA-256
+  `15313b51ace64cbfa81f8f6ef25ad64f04e5a6fb7f7823e67b107527bc081ac9`.
+  Four unchanged inference architecture modules from Kraken 7.1 are retained
+  under `boreholedesk/vendor/kraken_ppocr`, with their copyright headers,
+  full Apache licence and per-file provenance. The optional model is separate
+  from the application; an existing installation is required to expose the
+  reader. [Model source](https://huggingface.co/small-models-for-glam/kraken-ppocrv6-medium),
+  [Kraken source](https://github.com/mittagessen/kraken).
+
 - **RapidOCR 3.9.2 / ONNX Runtime**: their notices and recorded OCR model provenance
   are included. PaddleOCR-derived model sources are recorded in `MODEL_SOURCES.json`.
 - **RF-DETR 1.4.3**: Apache-2.0. The local RQD pack records the selected model hash
@@ -68,9 +78,30 @@ and copyright references. The repository's source-access page accompanies the
 download page; contact the maintainer through the distribution repository's issue
 tracker if a corresponding source link is unavailable.
 
+## CalculiX local FEM engine
+
+CalculiX CrunchiX 2.23 is copyright Guido Dhondt and contributors and is
+available under GNU GPL version 2 or later. BoreholeDesk invokes it as a
+separate local process. The installer downloads the unmodified Windows
+archive directly from the author's website and retains only `ccx_static.exe`;
+the solver binary is not embedded in the BoreholeDesk installer or component
+archives. The archive and executable are verified against pinned SHA-256
+values. No proprietary pre/postprocessor or CAD converter is installed.
+
+Author and licence: https://www.calculix.de/
+
+Original Windows distribution: https://www.dhondt.de/calculix_2.23_4win.zip
+
+Solver source: https://www.dhondt.de/ccx_2.23.src.tar.bz2
+
+Manual: https://www.dhondt.de/ccx_2.23.pdf
+
+When distributing a modified installation containing CalculiX, preserve its
+notices and satisfy the applicable GPL and dependency source obligations.
+
 ## Replacing libraries and rebuilding
 
-The supplied libraries are dynamically loaded. Close BoreholeDesk and work on a
+The supplied Qt and Python libraries are dynamically loaded. Close BoreholeDesk and work on a
 copy of the installation. ABI-compatible replacement Qt libraries/bindings can
 be built from the matching sources and substituted in `_internal/PySide6` and the
 corresponding binding directories. Runtime packages can be replaced in their

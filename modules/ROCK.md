@@ -297,6 +297,19 @@ Q=\frac{\max(10,RQD)}{J_n}\frac{J_r}{J_a}\frac{J_w}{SRF},\qquad D_e=\frac{span}{
 
 Jn is joint-set number, Jr roughness number, Ja alteration number, Jw water reduction and SRF stress reduction. ESR is the adopted excavation support ratio and span is in metres. The minimum RQD of 10 is a Q-calculation convention; it does not overwrite the observed RQD. Factors are supplied using the applicable NGI 2025 guidance and displayed by contribution. Selecting rock support requires the handbook conditions and engineering assessment, beyond this index calculation.
 
+NGI (2025), section 2.4, printed p. 8, also defines the base index for surface
+mapping and core characterization:
+
+```math
+Q'=Q_{base}=\frac{\max(10,RQD)}{J_n}\frac{J_r}{J_a}
+```
+
+The worksheet reports Qbase separately, excluding water and stress factors.
+It cannot replace complete Q for underground support assessment. Qbase is not
+QTBM. A TBM production prognosis additionally needs directional geology,
+machine/cutter characteristics and an appropriate performance model; this
+worksheet does not infer penetration, advance rates or construction duration.
+
 ### Inputs and units
 
 | Input |
@@ -312,7 +325,7 @@ Jn is joint-set number, Jr roughness number, Ja alteration number, Jw water redu
 
 ### Outputs and application
 
-Results include Q; Observed RQD (%); RQD used in Q (%); RQD/Jn; Jr/Ja; Jw/SRF; Equivalent dimension (m).
+Results include Q; Qbase (Q prime; no water/stress factors); Observed RQD (%); RQD used in Q (%); RQD/Jn; Jr/Ja; Jw/SRF; Equivalent dimension (m).
 
 **Application conditions:** RQD 0..100% (adopted minimum 10 for Q only); positive Jn,Jr,Ja,Jw,SRF,span,ESR; Jw<=1. Factors selected from applicable NGI 2025 guidance; no automatic support design.
 

@@ -2,11 +2,80 @@
 
 [Module index](../MODULES.md)
 
+<a id="spanish_foundation_guidance"></a>
+## Spanish foundation design guidance
+
+Ministerio de Fomento / Dirección General de Carreteras (2019), *Guía para el
+proyecto de cimentaciones en obras de carretera con Eurocódigo 7: Cimentaciones
+superficiales*. Distinguishes actions, characteristic/design values, ultimate
+limit states and serviceability checks. The guide acknowledges technical review
+by Carlos Oteo Mazo and Antonio Soriano Peña among its contributors.
+[Official guide](https://cdn.transportes.gob.es/portal-web-transportes/carreteras/normativa_tecnica/08.1_guias_tecnicas/guia_proyecto_cimentaciones_con_eurocodigo_7_cimentacione_superficiales.pdf).
+
+The introductory notice in the official file of the older *Guía de cimentaciones
+en obras de carretera* distinguishes its global-factor approach from the
+Eurocode basis required for specified State road works under OC 1/2019.
+Keep the adopted project rules separate from individual analytical methods;
+do not relabel a global-factor calculation as a complete Eurocode verification.
+[Official legacy guide and notice](https://cdn.transportes.gob.es/portal-web-transportes/carreteras/normativa_tecnica/08_geologia_geotecnia/0710401.pdf).
+
+<a id="consolidation_time"></a>
+## Time rate of primary consolidation
+
+Terzaghi's one-dimensional consolidation solution for uniform initial excess
+pore pressure and specified drainage boundaries. J. Atkinson, *GeotechniCAL*,
+Consolidation: mathematical model, Terzaghi's solution and drainage path length.
+[University-hosted reference](https://environment.uwe.ac.uk/geocal/soilmech/consol/soilcons.htm).
+Illinois DOT (2020), *Geotechnical Manual*, Appendix D.9.3, settlement-time
+estimation, equation D.9.3-1: t = Tv Hdr²/cv; rounded Tv50 = 0.197 and
+Tv90 = 0.848. The program solves the series rather than adopting these rounded
+time factors. [Manual](https://idot.illinois.gov/content/dam/soi/en/web/idot/documents/doing-business/manuals-guides-and-handbooks/highways/materials/geotechnical-manual.pdf).
+
+<a id="secondary_compression"></a>
+## Secondary compression
+
+USACE (1990), *Settlement Analysis*, EM 1110-1-1904, section 3-18,
+equation 3-30 and example on printed page 3-54. The reference-state void ratio
+converts Cα, expressed as change in void ratio per log10 time, into strain.
+[Manual](https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-1-1904.pdf).
+
+<a id="service_movements"></a>
+## Foundation service movements
+
+Ministerio de Fomento (2019), *CTE DB SE-C Cimientos*, section 2.4.3, Figure 2.1
+and equations 2.6-2.7 (printed p. SE-C-9). Defines differential settlement,
+angular distortion and relative rotation. Select the project service criterion
+for the actual structure and adopted design basis; the worksheet does not
+automatically assign the limits in Table 2.2.
+[Official document](https://www.codigotecnico.org/pdf/Documentos/SE/DBSE-C.pdf).
+
+<a id="seismic_moduli"></a>
+## Elastic wave velocities and dynamic moduli
+
+US EPA, *Environmental Geophysics: Acoustic Logging*, equations 3-5, and
+*Seismic Velocities (Vs, Vp)*, equation 1, after Wightman et al. (2003),
+FHWA-IF-04-021. Isotropic elastic wave relations with representative bulk mass
+density; no automatic dynamic-to-static modulus conversion.
+[Acoustic logging](https://archive.epa.gov/esd/archive-geophysics/web/html/acoustic_logging.html),
+[seismic velocities](https://archive.epa.gov/esd/archive-geophysics/web/html/seismic_velocities.html).
+
 Method cards identify the specific formulation and application conditions used
 by BoreholeDesk. The references below establish the scientific or engineering
 basis. Citations identify the formulation and its application conditions.
 Equations are presented in the notation used to explain the implementation.
 Original books, figures, graphical charts and private workbooks are not reproduced.
+
+<a id="pile_cyclic"></a>
+## Axial cyclic pile loading
+
+Puertos del Estado (2005). *ROM 0.5-05, Recomendaciones Geotécnicas para Obras
+Marítimas y Portuarias*. Section 3.6.3.5, printed pp. 238-241 and Figure 3.6.6
+(radial safety-factor construction); section 3.6.4.1, p. 242 (compression head
+equilibrium); section 3.6.7.1, p. 263 (uplift resistance).
+[Publisher's document](https://www.puertos.es/system/files/2024-04/ROM%200.5-05.pdf).
+The formulas and independently drawn interaction plot describe a stationary
+axial resistance envelope; they do not constitute a fatigue-life model or
+automatic Eurocode verification.
 
 <a id="gec6"></a>
 ## Shallow foundations and contact pressure
@@ -196,9 +265,37 @@ equation 1 and applicability discussion.
 ## Q-system
 
 Norwegian Geotechnical Institute (April 2025). *Using the Q-system: Rock Mass
-Classification and Support Design*. Q equation, parameter selection,
-RQD minimum convention and equivalent dimension.
+Classification and Support Design*. Sections 2.4 (Qbase, printed p. 8),
+3.1-3.2 (Q equation, parameter selection and RQD minimum convention) and
+4.1 (equivalent dimension).
 [NGI handbook](https://www.ngi.no/globalassets/bilder/forskning-og-radgivning/bygg-og-anlegg/q-handbook_2025_english_final.pdf).
+
+<a id="european_french"></a>
+## European design basis and French photovoltaic foundations
+
+European Commission JRC, [national implementation of Eurocodes](https://eurocodes.jrc.ec.europa.eu/en-eurocodes-implementation/national-standards)
+and [second-generation transition](https://eurocodes.jrc.ec.europa.eu/second-generation-eurocodes).
+Adopt the project edition and its National Annex together; the family-wide
+publication deadline is 30 September 2027 and withdrawal deadline is 30 March
+2028. National adoption and the contract determine the applicable project basis.
+
+AFNOR, [Eurocodes framework](https://normalisation.afnor.org/thematiques/eurocodes/):
+EN 1990 basis, EN 1991 actions, EN 1997 geotechnical design, relevant EN 1993
+steel parts and National Annexes. For steel piles see
+[NF EN 1993-5](https://www.boutique.afnor.org/fr-fr/norme/nf-en-19935/eurocode-3-calcul-des-structures-en-acier-partie-5-pieux-et-palplanches/fa119785/29662)
+and its French National Annex. Check the appropriate provisions for cold-formed sections.
+
+Cerema, *Eurocode 7 - Application to deep foundations (NF P94-262)*,
+[application guide](https://doc.cerema.fr/default/digitalCollection/DigitalCollectionAttachmentDownloadHandler.ashx?documentId=583651&parentDocumentId=14121&skipCopyright=true&skipWatermark=true).
+AFNOR [NF P94-151](https://norminfo.afnor.org/consultation/nf-p94-151/sols-reconnaissance-et-essais-essai-statique-de-pieu-isole-sous-effort-transversal/128489)
+concerns static lateral pile loading; [NF EN ISO 22477-2:2023](https://www.boutique.afnor.org/fr-fr/norme/nf-en-iso-224772/reconnaissance-et-essais-geotechniques-essais-des-structures-geotechniques-/fa199993/350658)
+concerns static axial tension loading and replaces NF P94-150-2. Do not use the
+axial test procedure as a lateral calibration rule.
+
+These references identify the design/test framework; they do not establish a
+universal displacement limit or turn a named empirical calculation into a
+complete code verification. Adopt serviceability criteria for the supported
+structure and the project specification.
 
 <a id="beam"></a>
 ## Lateral beam and subgrade reaction
@@ -208,6 +305,17 @@ equations 2.1–2.2: beam/soil interaction framework.
 [Caltrans report](https://dot.ca.gov/-/media/dot-media/programs/research-innovation-system-information/documents/f0016560-final-report-task-0932.pdf).
 The BoreholeDesk card states its linear Euler–Bernoulli/Winkler model,
 depth distributions and test-based calibration explicitly.
+
+MIT OpenCourseWare, *Solid Mechanics*, 1.050 (2004), chapter 10,
+*Deflections due to Bending*: curvature integration and superposition of beam
+flexure with support rotation.
+[Lecture chapter](https://ocw.mit.edu/courses/1-050-solid-mechanics-fall-2004/f9a4d5764b9b0f51ffaacbdf69f7aed8_emech10_04.pdf).
+
+FHWA (2018), *Design, Analysis, and Testing of Laterally Loaded Deep Foundations*,
+GEC 9, FHWA-HIF-18-031: lateral load testing, soil-structure interaction and
+nonlinear p-y analysis. A calibrated linear Winkler response does not establish
+axial uplift capacity or ultimate lateral resistance.
+[FHWA manual](https://www.fhwa.dot.gov/engineering/geotech/pubs/hif18031.pdf).
 
 <a id="fem"></a>
 ## Finite elements
@@ -317,3 +425,31 @@ rock masses: Problems and some solutions*, JRMGE 5(4), 249-261.
 [Publication](https://doi.org/10.1016/j.jrmge.2013.05.008).
 Peak joint strength, residual friction and empirical JRC/JCS scaling; no assumed
 cohesion for matching unfilled joints.
+
+
+<a id="calculix"></a>
+## Local plane-strain FEM engine
+
+Dhondt, G. and Wittig, K., *CalculiX CrunchiX 2.23 User's Manual* (2025),
+CPE3 plane-strain elements, elastic materials, static analysis and printed
+nodal/element output. [Author's manual](https://www.dhondt.de/ccx_2.23.pdf).
+The elastic worksheet uses one metre out of plane, consistent strip loads
+and tension-positive stresses. CalculiX is obtained unmodified from its author;
+its general solver capabilities do not expand the worksheet's stated model.
+
+<a id="pile_hyperbolic"></a>
+## Hyperbolic lateral pile response
+
+Stuedlein, A. W. and Li, Q. (2018), *Effects of High Strength Steel Bars and
+Steel Casing on the Response of Drilled Shafts*, ODOT SPR 765 /
+FHWA-OR-RD-18-09, section 2.5.11, p. 47, equation 2.92.
+[ODOT report](https://www.oregon.gov/odot/Programs/ResearchDocuments/SPR765_Drilled_Shafts_Response.pdf).
+The worksheet uses the monotonic hyperbolic p-y relation with supplied
+site-specific parameters and an elastic Euler-Bernoulli beam.
+
+<a id="rom_piles"></a>
+## Pile group load distribution, negative friction, settlement and lateral soil failure
+
+Puertos del Estado (2005), *ROM 0.5-05*. Section 3.6.10.1, printed p. 273 (axial spring framework for load distribution); section 3.6.3.4.1, pp. 232-234 and Figure 3.6.3 (negative friction and settlement compatibility); section 3.6.9.1.1, p. 269 (simplified individual settlement); section 3.6.8.1, pp. 265-267 and Figure 3.6.12, and section 3.6.8.3, p. 268 (general rigid-pile lateral GEO model).
+
+[Publisher document](https://www.puertos.es/system/files/2024-04/ROM%200.5-05.pdf). These geotechnical methods retain their stated assumptions; they do not establish a complete Eurocode structural or jurisdictional verification.
