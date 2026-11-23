@@ -290,8 +290,8 @@ Report preview shows the counts of applied lithology intervals, field
 observations, core runs and marked gaps in log descriptions. These counts describe
 the applied data; they are not a completeness or OCR-accuracy score. Unapplied
 drafts remain excluded from export and are identified in the preview notice.
-Unreadable depths must be entered from verified source information; they are
-not interpolated or guessed. In table/row reading, explicitly supplied depths
+Unreadable depths must be checked against verified source information. They are
+not repaired from isolated OCR numbers. In table/row reading, confirmed depths
 remain separate from the handwritten description.
 
 ### Read a table with depths and descriptions in separate columns
@@ -303,8 +303,13 @@ ruled rows...** can propose regions from the body of a description column;
 inspect each region, correct or remove proposals and add any missed rows. A
 printed ruling line does not necessarily mark a geological boundary.
 
-Depths in this workflow are entered and checked by the operator, not inferred
-from page position, recovery lengths or a sequence of isolated OCR numbers.
+Optionally enter the known depths at the first and last detected rule. This
+explicit calibration proposes intermediate depths using a linear source scale;
+it does not read the numbers or establish geological boundaries. Check every
+proposal, especially on distorted photographs or sheets with a nonlinear scale.
+Leave both calibration values blank to enter each row's depths manually.
+Calibrated depth proposals are amber. Confirm the source boundaries and depths
+before reading; changing a depth or source region clears this confirmation.
 Ambiguous values such as `48-11` require checking the original before entering
 a numeric depth; they are not converted to decimals automatically.
 
@@ -313,6 +318,14 @@ draft preserves the entered range beside its description. Correct readings,
 then use **Prepare intervals** to review and apply them. Original page numbers
 and source documents remain attached. Neither a successful reading nor a
 detected grid constitutes approval of the handwritten text.
+An unreadable source row keeps its confirmed depth range and an `[illegible]`
+marker, so that a missing description does not erase the row structure.
+Marked gaps appear in amber in the log sheet and PDF descriptions. To reproduce
+drawn symbols, select and depth-align the **Original geology column**; this
+preserves the original drawing rather than classifying it from OCR text.
+From field reading, **Preview report** opens interval review when data have not
+yet been applied. An empty report also offers **Review field data** to return to
+the relevant editor. Confirm the intervals and choose **Apply and preview**.
 
 For a handwritten column of numbers, try **Whole-column handwriting** and select
 only that column, keeping leading digits and decimal marks inside the selection.
