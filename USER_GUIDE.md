@@ -323,8 +323,10 @@ marker, so that a missing description does not erase the row structure.
 Marked gaps appear in amber in the log sheet and PDF descriptions. To reproduce
 drawn symbols, select and depth-align the **Original geology column**; this
 preserves the original drawing rather than classifying it from OCR text.
-From field reading, **Preview report** opens interval review when data have not
-yet been applied. An empty report also offers **Review field data** to return to
+From field reading, **Preview report** shows a read-only draft schematic when
+depth intervals have been proposed but not applied. **Review intervals** opens
+the editable interval table; closing the draft does not change the project.
+An empty report also offers **Review field data** to return to
 the relevant editor. Confirm the intervals and choose **Apply and preview**.
 
 For a handwritten column of numbers, try **Whole-column handwriting** and select
