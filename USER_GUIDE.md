@@ -328,6 +328,11 @@ depth intervals have been proposed but not applied. **Review intervals** opens
 the editable interval table; closing the draft does not change the project.
 An empty report also offers **Review field data** to return to
 the relevant editor. Confirm the intervals and choose **Apply and preview**.
+The log keeps the depth scale. When recorded text cannot fit a narrow row,
+its complete wording appears in **Log text continuations** in the same PDF,
+identified by depth range and column. Very thin rows are included there too.
+Reading gaps remain amber; the original wording and depths are not shortened
+in the project or replaced by a generated summary.
 
 For a handwritten column of numbers, try **Whole-column handwriting** and select
 only that column, keeping leading digits and decimal marks inside the selection.
