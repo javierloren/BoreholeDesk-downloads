@@ -506,12 +506,18 @@ results from an empty case.
 The [complete module reference](MODULES.md) documents the calculation worksheets,
 slope stability and field-to-report workflows, with inputs, equations and bibliography.
 
-In **Slope stability > Model**, choose an editing tool to draw the ground or
+In **Slope stability > Model**, the **Ground** tool is selected for a new case.
+Use the visible model toolbar to draw the ground or
 water profile and edit the selected material contact. Click to add a point, drag
 a handle to move it, or right-click a handle to remove it. Keep points ordered
 from left to right. Select the material in **Layers** before editing its contact.
 The coordinate tables update with each accepted edit and remain available for
 exact input. **Inspect / pan**, the mouse wheel and **Fit image** control the view.
+The **Required inputs** list identifies missing values and invalid surcharge
+strips. Click an entry to open its input cell; required cells are highlighted.
+No material properties or analysis circle are inferred from a drawn profile.
+For surcharges, **Start X** and **End X** are horizontal positions, not heights.
+End X must exceed Start X; arrows follow the ground surface over that strip.
 In **Inspect / pan**, double-click a soil region, profile, surcharge, anchor or
 slip-circle outline to open its existing input table. Selecting an element does
 not change the model or its results. Anchor labels show the current calculated
