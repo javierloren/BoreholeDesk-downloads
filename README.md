@@ -6,8 +6,8 @@ Free Windows desktop software for geological field records, borehole logs, geote
 
 | Choose your installation | Total download | Includes |
 | --- | --- | --- |
-| **[Download Complete](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3/BoreholeDesk-0.1.3-Complete-Windows-x64.exe?v=0b8e53e5dff0)** | About 4.67 GB | All local readers, including handwriting, and the implemented engineering tools |
-| **[Download Quick](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3/BoreholeDesk-0.1.3-Quick-Windows-x64.exe?v=3ea6ce250af6)** | About 0.79 GB | Printed OCR, core-photo RQD and the same engineering tools; handwriting readers can be added later |
+| **[Download Complete](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3/BoreholeDesk-0.1.3-Complete-Windows-x64.exe?v=d9c0d31d6886)** | About 4.67 GB | All local readers, including handwriting, and the implemented engineering tools |
+| **[Download Quick](https://github.com/javierloren/BoreholeDesk-downloads/releases/download/v0.1.3/BoreholeDesk-0.1.3-Quick-Windows-x64.exe?v=7b6ce54276e8)** | About 0.79 GB | Printed OCR, core-photo RQD and the same engineering tools; handwriting readers can be added later |
 
 **For handwritten field sheets, choose Complete.** Download and run the EXE, allow installation to finish and open BoreholeDesk from the Start menu. No GitHub account, separate Python installation or administrator account is required. The small installer obtains and verifies the selected components automatically; the figures above are the total download. Prepared local readers work offline. Choose **File > Open example project** for a first walkthrough.
 

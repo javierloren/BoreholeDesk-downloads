@@ -205,7 +205,7 @@ in a copy before import.
    cancel and continue with manual entry. Python setup is not required.
 5. Compare the proposed transcription with the original, especially depths,
    sample identifiers, decimal separators, units and crossed-out notes.
-6. Correct the text, then use **Prepare intervals** and **Apply and preview**
+6. Correct the text, then use **Complete log / review intervals** and **Apply and preview**
    only after reviewing the proposed structured data.
 7. In the report preview, check the intervals against the original. Choose
    **Export PDF...** to save the report, and save the project to keep the source
@@ -265,12 +265,12 @@ original and transcription more room. Expand them again to retry or change a
 setting. Empty or partial readings keep the controls open. The Original selector
 remains available in either view.
 
-Use **Prepare intervals...**, review the explicit depths and descriptions, check
+Use **Complete log / review intervals...**, review the explicit depths and descriptions, check
 the source-review box, then choose **Apply and preview**. The text becomes the
 description in the borehole log without copying it again. Marked gaps remain
 visible in the report until corrected; no material or colour is inferred from
 a description containing them. Editing an interval clears the review checkbox.
-The highlighted **Prepare intervals...** action opens the interval editor;
+The highlighted **Complete log / review intervals...** action opens the interval editor;
 **Apply and preview** becomes available after you check the source-review box.
 Moving between tasks does not apply or discard an interval draft.
 
@@ -315,11 +315,15 @@ a numeric depth; they are not converted to decimals automatically.
 
 Choose **Read selected rows** to read each region separately. The resulting
 draft preserves the entered range beside its description. Correct readings,
-then use **Prepare intervals** to review and apply them. Original page numbers
+then use **Complete log / review intervals** to review and apply them. Original page numbers
 and source documents remain attached. Neither a successful reading nor a
 detected grid constitutes approval of the handwritten text.
 An unreadable source row keeps its confirmed depth range and an `[illegible]`
 marker, so that a missing description does not erase the row structure.
+After a source-row reading, the editable interval table opens automatically.
+Complete or correct the descriptions there, review the depths and confirm the
+intervals before **Apply and preview**. Existing unsaved interval edits are kept;
+use **Complete log / review intervals** to prepare another reading explicitly.
 Marked gaps appear in amber in the log sheet and PDF descriptions. To reproduce
 drawn symbols, select and depth-align the **Original geology column**; this
 preserves the original drawing rather than classifying it from OCR text.
@@ -333,6 +337,14 @@ its complete wording appears in **Log text continuations** in the same PDF,
 identified by depth range and column. Very thin rows are included there too.
 Reading gaps remain amber; the original wording and depths are not shortened
 in the project or replaced by a generated summary.
+In **Report setup > Log column widths**, adjust the relative widths to give
+descriptions more space. All columns remain on the page and retain their depth
+scale. Unprintably narrow settings are rejected. **Restore standard widths**
+returns to the original layout. Save a report profile to reuse the widths; the
+same layout is used for the preview, log-only export and complete PDF report.
+The preview opens at the first log sheet containing recorded intervals. If the
+first recorded interval starts at 20 m, you are taken to that depth; the PDF retains the full
+depth scale and preceding sheets remain available through the page selector.
 
 For a handwritten column of numbers, try **Whole-column handwriting** and select
 only that column, keeping leading digits and decimal marks inside the selection.
